@@ -50,7 +50,7 @@ spec:
     ingress:
       enabled: true
       className: public
-        hosts:
+      hosts:
         - host: mccp.howard.moomboo.stage
           paths:
             - path: /
