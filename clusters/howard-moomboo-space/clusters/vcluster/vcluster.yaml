@@ -67,4 +67,4 @@ spec:
           enabled: true
         ingresses:
           enabled: true
-  kubernetesVersion: 1.26
+  kubernetesVersion: "1.26"
