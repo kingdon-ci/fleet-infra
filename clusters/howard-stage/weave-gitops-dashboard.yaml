@@ -40,18 +40,16 @@ spec:
       passwordHash: $2a$10$osfOcK33vVdENPQED.fho.DJia2Drex6l2fNZH3LwXlFYvN2BwWIi
       username: admin
     oidcSecret:
-      create: false
-      # clientID:
-      # clientSecret:
-      # issuerURL: "https://dex.howard.moomboo.space"
-      # redirectURL: "http://mccp.howard.moomboo.stage/oauth2/callback"
-      # claimUsername: ""
-      # claimGroups: ""
+      create: true
+      clientID: weave-gitops
+      clientSecret: AiAImuXKhoI5ApvKWF988txjZ+6rG3S7o6X5En
+      issuerURL: "https://dex.howard.moomboo.space"
+      redirectURL: "http://mccp-staging.howard.moomboo.space/oauth2/callback"
     ingress:
       enabled: true
       className: public
       hosts:
-        - host: mccp.howard.moomboo.stage
+        - host: mccp-staging.howard.moomboo.space
           paths:
             - path: /
               pathType: ImplementationSpecific
