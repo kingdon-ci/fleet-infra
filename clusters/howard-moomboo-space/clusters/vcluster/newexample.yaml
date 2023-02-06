@@ -59,7 +59,7 @@ spec:
         - --kube-apiserver-arg --oidc-groups-claim=groups
       syncer:
         extraArgs:
-        - "--tls-san=newexample.turkey.local"
+        - "--tls-san=newexample.howard.moomboo.space"
       sync:
         nodes:
           enabled: true
