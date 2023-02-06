@@ -47,7 +47,7 @@ metadata:
   namespace: vcluster
 spec:
   controlPlaneEndpoint:
-    host: newexample.turkey.local
+    host: newexample.howard.moomboo.space
     port: 443
   helmRelease:
     values: |-
