@@ -29,5 +29,5 @@ They are provided gratis by an owner, come with no warranty or guarantee of
 continued or reliable service, and may be turned off sometimes, periodically,
 on an unscheduled basis, or have irregular service. Be ye here fore- warned!
 
-These "production" instances may deleted, could go away forever at any time!
+These "production" instances may be deleted, could go away forever at any time!
 Depend on these systems at your own risk, (what are you even still doing here.)
