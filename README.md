@@ -25,6 +25,9 @@ to gain direct access with `kubectl`.
 
 This is not a production system, but it may host some production services. 🤞
 
-Depend on these systems at your own risk, they are provided gratis by owner
-come with no warranty or guarantee of continued service, and may go down
-forever at any time!
+They are provided gratis by an owner, come with no warranty or guarantee of
+continued or reliable service, and may be turned off sometimes, periodically,
+on an unscheduled basis, or have irregular service. Be ye here fore- warned!
+
+These "production" instances may deleted, could go away forever at any time!
+Depend on these systems at your own risk, (what are you even still doing here.)
