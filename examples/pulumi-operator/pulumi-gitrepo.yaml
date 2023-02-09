@@ -1,0 +1,11 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: pulumi-operator
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  ref:
+    semver: "1.11.x"
+  url: https://github.com/pulumi/pulumi-kubernetes-operator
