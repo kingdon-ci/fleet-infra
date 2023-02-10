@@ -4,3 +4,4 @@ namespace: flux-system
 resources:
 - podinfo-environments.yaml
 - podinfo-gitrepo.yaml
+- gitopsset-admin-permissions.yaml
