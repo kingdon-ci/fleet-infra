@@ -1,0 +1,31 @@
+apiVersion: templates.weave.works/v1alpha1
+kind: GitOpsSet
+metadata:
+  name: podinfo
+spec:
+  generators:
+    - list:
+        elements:
+          - env: dev
+            team: dev-team
+          - env: production
+            team: ops-team
+          - env: staging
+            team: ops-team
+  templates:
+    - content:
+        kind: Kustomization
+        apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+        metadata:
+          name: "{{ .element.env }}-podinfo"
+          labels:
+            app.kubernetes.io/name: podinfo
+            app.kubernetes.io/instance: "{{ .element.env }}"
+            com.example/team: "{{ .element.team }}"
+        spec:
+          interval: 5m
+          path: "./deploy/overlays/{{ .element.env }}"
+          prune: true
+          sourceRef:
+            kind: GitRepository
+            name: podinfo
