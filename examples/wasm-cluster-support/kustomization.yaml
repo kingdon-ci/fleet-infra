@@ -6,3 +6,4 @@ resources:
 - crun-rc.yaml
 - spin-rc.yaml
 - wasm-spin-deploy.yaml
+- wasm-spin-service.yaml

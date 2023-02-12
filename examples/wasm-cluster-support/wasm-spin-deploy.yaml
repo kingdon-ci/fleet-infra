@@ -23,9 +23,12 @@ spec:
       containers:
       - command:
         - /
-        image: ghcr.io/deislabs/containerd-wasm-shims/examples/spin-rust-hello:latest
+        image: docker.io/kingdonb/cloud-start-wasm:latest
         imagePullPolicy: Always
         name: spin-hello
+        ports:
+        - containerPort: 80
+          name: http-web-svc
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       runtimeClassName: spin
