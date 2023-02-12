@@ -23,7 +23,7 @@ spec:
       containers:
       - command:
         - /
-        image: docker.io/kingdonb/cloud-start-wasm:latest
+        image: docker.io/kingdonb/rust-qs-wasm-spin:latest
         imagePullPolicy: Always
         name: spin-hello
         ports:
