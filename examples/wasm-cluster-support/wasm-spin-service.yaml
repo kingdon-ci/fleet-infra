@@ -11,3 +11,16 @@ spec:
     protocol: TCP
     port: 80
     targetPort: http-web-svc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wasm-spin-qs
+spec:
+  selector:
+    app: wasm-spin-qs
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: http-web-svc

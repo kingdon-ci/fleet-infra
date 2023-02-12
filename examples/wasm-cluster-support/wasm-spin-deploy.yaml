@@ -1,6 +1,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: wasm-spin-qs
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: wasm-spin-qs
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: wasm-spin-qs
+    spec:
+      containers:
+      - command:
+        - /
+        image: docker.io/kingdonb/rust-qs-wasm-spin:latest
+        imagePullPolicy: Always
+        name: spin-hello
+        ports:
+        - containerPort: 80
+          name: http-web-svc
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      runtimeClassName: spin
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: wasm-spin
   namespace: default
 spec:
@@ -23,7 +58,7 @@ spec:
       containers:
       - command:
         - /
-        image: docker.io/kingdonb/rust-qs-wasm-spin:latest
+        image: docker.io/kingdonb/cloud-start-wasm:latest
         imagePullPolicy: Always
         name: spin-hello
         ports:
