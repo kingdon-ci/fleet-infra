@@ -18,9 +18,10 @@ kind: ClusterRole
 metadata:
   name: home-guests-cluster-role
 rules:
-  - apiGroups: ["limnocentral-kubeconfig-user"]
+  - apiGroups: [""]
     resources: ["secrets"]
     verbs: ["get", "list"]
+    resourceNames: ["limnocentral-kubeconfig-user"]
   - apiGroups: [""]
     resources: ["pods"]
     verbs: ["get", "list"]
