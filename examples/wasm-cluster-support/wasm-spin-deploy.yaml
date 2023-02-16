@@ -67,3 +67,5 @@ spec:
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       runtimeClassName: spin
+      nodeSelector:
+        kwasm.sh/kwasm-provisioned: msigaming
