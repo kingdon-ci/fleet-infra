@@ -39,6 +39,15 @@ rules:
   - apiGroups: ["pac.weave.works"]
     resources: ["policies"]
     verbs: ["get", "list"]
+  - apiGroups: ["cluster.x-k8s.io"]
+    resources: ["clusters"]
+    verbs: ["get", "list"]
+  - apiGroups: ["gitops.weave.works"]
+    resources: ["gitopsclusters"]
+    verbs: ["get", "list"]
+  - apiGroups: ["infrastructure.cluster.x-k8s.io"]
+    resources: ["vclusters"]
+    verbs: ["get", "list"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
