@@ -74,3 +74,6 @@ rules:
   - apiGroups: [""]
     resources: ["namespaces"]
     verbs: ["get", "list"]
+  - apiGroups: ["pac.weave.works"]
+    resources: ["policies"]
+    verbs: ["get", "list"]
