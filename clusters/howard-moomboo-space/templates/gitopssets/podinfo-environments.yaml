@@ -24,11 +24,14 @@ spec:
         apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
         metadata:
           name: "{{ .Element.env }}-podinfo"
+          namespace: default
           labels:
             app.kubernetes.io/name: podinfo
             app.kubernetes.io/instance: "{{ .Element.env }}"
             com.example/team: "{{ .Element.team }}"
         spec:
+          kubeConfig:
+            secretRef: cluster-01-kubeconfig
           interval: 5m
           path: "./deploy/overlays/{{ .Element.env }}"
           prune: true
