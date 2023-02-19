@@ -8,6 +8,7 @@ metadata:
     app.kubernetes.io/managed-by: kustomize
     app.kubernetes.io/created-by: gitopssets-controller
   name: gitopsset-sample
+  namespace: default
 spec:
   generators:
     - list:
@@ -24,7 +25,6 @@ spec:
         apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
         metadata:
           name: "{{ .Element.env }}-podinfo"
-          namespace: default
           labels:
             app.kubernetes.io/name: podinfo
             app.kubernetes.io/instance: "{{ .Element.env }}"
