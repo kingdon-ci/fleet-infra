@@ -2,10 +2,9 @@ apiVersion: gitops.weave.works/v1alpha1
 kind: GitopsCluster
 metadata:
   annotations:
-    templates.weave.works/create-request: '{"repository_url":"https://github.com/kingdon-ci/fleet-infra","head_branch":"wge-create-branch-qo3nyt","title":"Creates
-      resource limnocentral","description":"This PR creates a cluster-template-development-plus-kubelogin
-      instance","template_name":"cluster-template-development-plus-kubelogin","parameter_values":{"CLUSTER_NAME":"limnocentral","K3S_VERSION":"v1.26.1-k3s1","KUBERNETES_VERSION":"1.26","NAMESPACE":"test"},"commit_message":"Creates
-      cluster-template-development-plus-kubelogin instance","credentials":{},"template_namespace":"default","template_kind":"GitOpsTemplate"}'
+    templates.weave.works/create-request: '{"repository_url":"https://github.com/kingdon-ci/fleet-infra","head_branch":"edit-limnocentral-branch-z01lx","title":"Edits
+      limnocentral","description":"This PR edits the resource limnocentral","template_name":"cluster-template-development-plus-kubelogin","parameter_values":{"CLUSTER_NAME":"limnocentral","K3S_VERSION":"v1.23.16-k3s1","KUBERNETES_VERSION":"1.23","NAMESPACE":"test"},"commit_message":"Edits
+      limnocentral","credentials":{},"template_namespace":"vcluster","template_kind":"GitOpsTemplate"}'
   labels:
     templates.weave.works/template-name: cluster-template-development-plus-kubelogin
     templates.weave.works/template-namespace: default
@@ -52,7 +51,7 @@ spec:
   helmRelease:
     values: |-
       vcluster:
-        image: "rancher/k3s:v1.26.1-k3s1"
+        image: "rancher/k3s:v1.23.16-k3s1"
         extraArgs:
         - --kube-apiserver-arg --oidc-issuer-url=https://dex.howard.moomboo.space
         - --kube-apiserver-arg --oidc-client-id=wg-kubelogin
@@ -71,4 +70,4 @@ spec:
           enabled: true
         ingresses:
           enabled: true
-  kubernetesVersion: "1.26"
+  kubernetesVersion: "1.23"
