@@ -1,0 +1,5 @@
+# tenants:
+#   - name: test-tenant
+#     namespaces:
+#     - test-ns1
+#     - test-ns2
