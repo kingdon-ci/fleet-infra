@@ -31,7 +31,8 @@ spec:
             com.example/team: "{{ .Element.team }}"
         spec:
           kubeConfig:
-            secretRef: cluster-01-kubeconfig
+            secretRef:
+              name: cluster-01-kubeconfig
           interval: 5m
           path: "./deploy/overlays/{{ .Element.env }}"
           prune: true
