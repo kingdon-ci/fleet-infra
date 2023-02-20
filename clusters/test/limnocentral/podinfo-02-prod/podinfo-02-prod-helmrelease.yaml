@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: podinfo
-      version: '^5.0.0'
+      version: '^5.0.0' # {"$promotion": "podinfo-02:podinfo:prod"}
   interval: 1m0s
   releaseName: podinfo
   values:
