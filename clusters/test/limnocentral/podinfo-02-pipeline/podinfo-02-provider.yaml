@@ -2,7 +2,7 @@ apiVersion: notification.toolkit.fluxcd.io/v1beta1
 kind: Provider
 metadata:
   name: promotion-podinfo-02
-  namespace: test
+  namespace: podinfo-02-pipeline
 spec:
   address: "https://promotions.howard.moomboo.space/promotion/podinfo-02/podinfo/dev"
   type: generic-hmac
