@@ -1,0 +1,9 @@
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Provider
+metadata:
+  name: promotion-podinfo-02
+spec:
+  address: "https://promotions.howard.moomboo.space/promotion/podinfo-02/podinfo/dev"
+  type: generic-hmac
+  secretRef:
+    name: hmac-secret
