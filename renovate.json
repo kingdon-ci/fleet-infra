@@ -9,7 +9,6 @@
     "**/vendor/**",
     "**/examples/**",
     "**/__tests__/**",
-    "**/test/**",
     "**/tests/**",
     "**/__fixtures__/**"
   ]
