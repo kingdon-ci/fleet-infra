@@ -2,6 +2,7 @@ apiVersion: notification.toolkit.fluxcd.io/v1beta1
 kind: Alert
 metadata:
   name: promotion-podinfo-02
+  namespace: test
 spec:
   eventSeverity: info
   eventSources:
