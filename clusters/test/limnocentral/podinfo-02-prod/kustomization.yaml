@@ -1,0 +1,6 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- namespace.yaml
+- podinfo-02-prod-helmrelease.yaml
+- podinfo-02-prod-helmrepo.yaml
