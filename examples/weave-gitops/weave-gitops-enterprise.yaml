@@ -15,6 +15,7 @@ metadata:
   name: weave-gitops-enterprise
   namespace: flux-system
 spec:
+  suspend: true
   dependsOn:
     - name: ww-gitops
   chart:
