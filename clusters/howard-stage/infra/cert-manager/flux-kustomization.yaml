@@ -10,7 +10,7 @@ spec:
   # suspend: true
   retryInterval: 1m30s
   targetNamespace: cert-manager
-  path: ./examples/cert-manager/1.11.0
+  path: ./examples/cert-manager/staging
   prune: true
   sourceRef:
     kind: GitRepository
