@@ -1,127 +1,127 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
-metadata:
-  name: weave-gitops-enterprise-charts
-  namespace: flux-system
-spec:
-  interval: 60m
-  secretRef:
-    name: weave-gitops-enterprise-credentials
-  url: https://charts.dev.wkp.weave.works/releases/charts-v3
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: weave-gitops-enterprise
-  namespace: flux-system
-spec:
-  dependsOn:
-    - name: ww-gitops
-  chart:
-    spec:
-      interval: 65m
-      chart: mccp
-      sourceRef:
-        kind: HelmRepository
-        name: weave-gitops-enterprise-charts
-        namespace: flux-system
-      version: ">0.9.5"
-  install:
-    crds: CreateReplace
-  upgrade:
-    crds: CreateReplace
-  interval: 50m
-  values:
-    envVars:
-    - name: WEAVE_GITOPS_FEATURE_TENANCY
-      value: "true"
-    - name: WEAVE_GITOPS_FEATURE_CLUSTER
-      value: "false"
-    - name: WEAVE_GITOPS_USERS_CLIENTS_TTL
-      value: "30s"
-    global:
-      capiEnabled: false
-    ingress:
-      enabled: true
-      className: "public"
-      service:
-        name: clusters-service
-        port: 8000
-      annotations:
-        cert-manager.io/cluster-issuer: example-clusterissuer
-      hosts:
-        - host: "mccp-staging.howard.moomboo.space"
-          paths:
-            - path: /
-              pathType: ImplementationSpecific
-      tls:
-       - secretName: mccp-staging-howard-tls
-         hosts:
-           - mccp-staging.howard.moomboo.space
-
-    # -- Configure TLS settings if needed
-    tls:
-      enabled: false
-      # -- Can be disabled if TLS is handled by a user-provided ingress controller
-      # enabled: true
-      # -- optionally specify a TLS secret
-      # secretName: null
-
-    listOCIRepositories: true
-    enableRunUI: true
-
-    config:
-      cluster:
-        name: howard-moomboo-stage
-      oidc:
-        enabled: true
-        issuerURL: "https://dex.howard.moomboo.space"
-        redirectURL: "https://mccp-staging.howard.moomboo.space/oauth2/callback"
-        cookieDuration: 72h
-        claimUsername: ""
-        claimGroups: ""
-        # Name of secret in flux-system namespace that contains a clientId and clientSecret
-        clientCredentialsSecret: github-client
-        # Customise the requested scopes for then OIDC authentication flow - openid will always be requested
-        customScopes: "email,offline_access,groups"
-      auth:
-        userAccount:
-          enabled: false
-
-      # capi:
-      #   repositoryURL: https://github.com/kingdon-ci/fleet-infra
-      #   # -- Can be changed depending on your git repo structure
-      #   repositoryPath: ./clusters/howard-stage/clusters
-      #   # repositoryClustersPath: ./cluster
-
-      git:
-        type: github
-        # -- Change if using on-prem github/gitlab
-        # hostname: https://github.com
-
-    #clustersService:
-
-    policy-agent:
-      enabled: false
-
-    enablePipelines: true
-    pipeline-controller:
-      promotion:
-        ingress:
-          enabled: true
-          className: public
-          annotations:
-            cert-manager.io/cluster-issuer: example-clusterissuer
-          hosts:
-          - host: promotions-staging.howard.moomboo.space
-            paths:
-            - path: /?(.*)
-              pathType: ImplementationSpecific
-          tls:
-          - secretName: promotions-tls
-            hosts:
-            - promotions-staging.howard.moomboo.space
-
-    # Preview feature
-    gitopssets-controller:
-      enabled: true
+# apiVersion: source.toolkit.fluxcd.io/v1beta2
+# kind: HelmRepository
+# metadata:
+#   name: weave-gitops-enterprise-charts
+#   namespace: flux-system
+# spec:
+#   interval: 60m
+#   secretRef:
+#     name: weave-gitops-enterprise-credentials
+#   url: https://charts.dev.wkp.weave.works/releases/charts-v3
+# ---
+# apiVersion: helm.toolkit.fluxcd.io/v2beta1
+# kind: HelmRelease
+# metadata:
+#   name: weave-gitops-enterprise
+#   namespace: flux-system
+# spec:
+#   dependsOn:
+#     - name: ww-gitops
+#   chart:
+#     spec:
+#       interval: 65m
+#       chart: mccp
+#       sourceRef:
+#         kind: HelmRepository
+#         name: weave-gitops-enterprise-charts
+#         namespace: flux-system
+#       version: ">0.9.5"
+#   install:
+#     crds: CreateReplace
+#   upgrade:
+#     crds: CreateReplace
+#   interval: 50m
+#   values:
+#     envVars:
+#     - name: WEAVE_GITOPS_FEATURE_TENANCY
+#       value: "true"
+#     - name: WEAVE_GITOPS_FEATURE_CLUSTER
+#       value: "false"
+#     - name: WEAVE_GITOPS_USERS_CLIENTS_TTL
+#       value: "30s"
+#     global:
+#       capiEnabled: false
+#     ingress:
+#       enabled: true
+#       className: "public"
+#       service:
+#         name: clusters-service
+#         port: 8000
+#       annotations:
+#         cert-manager.io/cluster-issuer: example-clusterissuer
+#       hosts:
+#         - host: "mccp-staging.howard.moomboo.space"
+#           paths:
+#             - path: /
+#               pathType: ImplementationSpecific
+#       tls:
+#        - secretName: mccp-staging-howard-tls
+#          hosts:
+#            - mccp-staging.howard.moomboo.space
+# 
+#     # -- Configure TLS settings if needed
+#     tls:
+#       enabled: false
+#       # -- Can be disabled if TLS is handled by a user-provided ingress controller
+#       # enabled: true
+#       # -- optionally specify a TLS secret
+#       # secretName: null
+# 
+#     listOCIRepositories: true
+#     enableRunUI: true
+# 
+#     config:
+#       cluster:
+#         name: howard-moomboo-stage
+#       oidc:
+#         enabled: true
+#         issuerURL: "https://dex.howard.moomboo.space"
+#         redirectURL: "https://mccp-staging.howard.moomboo.space/oauth2/callback"
+#         cookieDuration: 72h
+#         claimUsername: ""
+#         claimGroups: ""
+#         # Name of secret in flux-system namespace that contains a clientId and clientSecret
+#         clientCredentialsSecret: github-client
+#         # Customise the requested scopes for then OIDC authentication flow - openid will always be requested
+#         customScopes: "email,offline_access,groups"
+#       auth:
+#         userAccount:
+#           enabled: false
+# 
+#       # capi:
+#       #   repositoryURL: https://github.com/kingdon-ci/fleet-infra
+#       #   # -- Can be changed depending on your git repo structure
+#       #   repositoryPath: ./clusters/howard-stage/clusters
+#       #   # repositoryClustersPath: ./cluster
+# 
+#       git:
+#         type: github
+#         # -- Change if using on-prem github/gitlab
+#         # hostname: https://github.com
+# 
+#     #clustersService:
+# 
+#     policy-agent:
+#       enabled: false
+# 
+#     enablePipelines: true
+#     pipeline-controller:
+#       promotion:
+#         ingress:
+#           enabled: true
+#           className: public
+#           annotations:
+#             cert-manager.io/cluster-issuer: example-clusterissuer
+#           hosts:
+#           - host: promotions-staging.howard.moomboo.space
+#             paths:
+#             - path: /?(.*)
+#               pathType: ImplementationSpecific
+#           tls:
+#           - secretName: promotions-tls
+#             hosts:
+#             - promotions-staging.howard.moomboo.space
+# 
+#     # Preview feature
+#     gitopssets-controller:
+#       enabled: true
