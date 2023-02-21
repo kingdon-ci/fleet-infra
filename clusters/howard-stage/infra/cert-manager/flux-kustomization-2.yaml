@@ -2,13 +2,15 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: cert-manager
+  name: cert-issuers
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: cert-manager
   interval: 10m0s
   timeout: 1m0s
   retryInterval: 1m30s
-  path: ./examples/cert-manager/1.11.0
+  path: ./examples/cert-manager/staging
   prune: true
   sourceRef:
     kind: GitRepository
