@@ -113,14 +113,14 @@ spec:
           annotations:
             cert-manager.io/cluster-issuer: production-letsencrypt
           hosts:
-          - host: promotions.howard.moomboo.space
+          - host: promotions-staging.howard.moomboo.space
             paths:
             - path: /?(.*)
               pathType: ImplementationSpecific
           tls:
           - secretName: promotions-tls
             hosts:
-            - promotions.howard.moomboo.space
+            - promotions-staging.howard.moomboo.space
 
     # Preview feature
     gitopssets-controller:
