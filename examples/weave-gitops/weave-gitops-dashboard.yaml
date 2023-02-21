@@ -44,7 +44,7 @@ spec:
       clientID: weave-gitops
       clientSecret: AiAImuXKhoI5ApvKWF988txjZ+6rG3S7o6X5En
       issuerURL: "https://dex.howard.moomboo.space"
-      redirectURL: "http://mccp-staging.howard.moomboo.space/oauth2/callback"
+      redirectURL: "https://gitops-staging.howard.moomboo.space/oauth2/callback"
     ingress:
       enabled: true
       className: public
