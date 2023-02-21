@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
 data:
   example.server: |
-    example.com {
+    howard.moomboo.stage {
       hosts {
           98.227.195.144 howard.moomboo.stage
           fallthrough
