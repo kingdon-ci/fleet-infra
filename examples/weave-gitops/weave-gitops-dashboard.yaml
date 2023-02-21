@@ -48,8 +48,14 @@ spec:
     ingress:
       enabled: true
       className: public
+      annotations:
+        cert-manager.io/cluster-issuer: example-clusterissuer
       hosts:
         - host: gitops-staging.howard.moomboo.space
           paths:
             - path: /
               pathType: ImplementationSpecific
+      tls:
+      - secretName: gitops-staging-tls
+        hosts:
+          - gitops-staging.howard.moomboo.space
