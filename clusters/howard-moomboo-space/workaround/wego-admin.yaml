@@ -2,20 +2,20 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: home-guests-cluster-role-binding
+  name: home-guests-cluster-role-binding-2
 subjects:
   - kind: Group
     name: kingdon-ci:home-guests
     apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
-  name: home-guests-cluster-role
+  name: home-guests-cluster-role-2
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: home-guests-cluster-role
+  name: home-guests-cluster-role-2
 rules:
   - apiGroups: ["gitops.weave.works"]
     resources: ["gitopsclusters"]
