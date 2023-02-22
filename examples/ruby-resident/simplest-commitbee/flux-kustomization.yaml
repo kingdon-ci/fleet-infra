@@ -6,13 +6,22 @@ metadata:
   namespace: simplest-commitbee
 spec:
   interval: 1m0s
-  targetNamespace: simplest-commitbee
+  # targetNamespace: ruby-test
   path: ./deploy/bases/flux-helm
   prune: true
   sourceRef:
     kind: GitRepository
     name: simplest-commitbee
   patches:
+    - patch: |-
+        $patch: delete
+        apiVersion: source.toolkit.fluxcd.io/v1beta2
+        kind: GitRepository
+        metadata:
+          name: not-used
+      target:
+        kind: GitRepository
+        name: simplest-commitbee
     - patch: |-
         $patch: delete
         apiVersion: v1
