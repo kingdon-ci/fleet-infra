@@ -20,6 +20,6 @@ rules:
   - apiGroups: ["gitops.weave.works"]
     resources: ["gitopsclusters"]
     verbs: ["get", "list", "watch"]
-  - apiGroups: ["clusters.cluster.x-k8s.io"]
-    resources: ["capi-cluster"]
+  - apiGroups: ["cluster.x-k8s.io"]
+    resources: ["clusters"]
     verbs: ["get", "list", "watch"]
