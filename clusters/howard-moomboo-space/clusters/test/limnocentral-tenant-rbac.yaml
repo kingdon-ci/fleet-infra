@@ -21,7 +21,7 @@ rules:
   - apiGroups: [""]
     resources: ["secrets"]
     verbs: ["get", "list"]
-    resourceNames: ["limnocentral-user-kubeconfig"]
+    resourceNames: ["limnocentral-user-kubeconfig", "howard-moomboo-staging-user-kubeconfig"]
   - apiGroups: [""]
     resources: ["pods"]
     verbs: ["get", "list"]
