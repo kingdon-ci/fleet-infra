@@ -122,3 +122,6 @@ rules:
   - apiGroups: ["acme.cert-manager.io"]
     resources: ["certificaterequests", "challenges", "clusterissuers", "issuers", "orders"]
     verbs: ["get", "list"]
+  - apiGroups: ["cert-manager.io"]
+    resources: ["certificaterequests", "challenges", "clusterissuers", "issuers", "orders"]
+    verbs: ["get", "list"]
