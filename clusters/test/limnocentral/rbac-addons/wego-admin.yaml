@@ -36,7 +36,7 @@ rules:
     resources: ["apiservices"]
     verbs: ["get", "list"]
   - apiGroups: ["autoscaling"]
-    resources: ["horizontalpodautoscaler"]
+    resources: ["horizontalpodautoscalers"]
     verbs: ["get", "list"]
   - apiGroups: ["admissionregistration.k8s.io"]
     resources: ["mutatingwebhookconfigurations", "validatingwebhookconfigurations"]
