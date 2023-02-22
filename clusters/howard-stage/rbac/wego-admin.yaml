@@ -119,3 +119,6 @@ rules:
   - apiGroups: ["storage.k8s.io"]
     resources: ["csidrivers", "csinodes", "csistoragecapacities", "storageclasses", "volumeattachments"]
     verbs: ["get", "list"]
+  - apiGroups: ["cert-manager.io"]
+    resources: ["certificaterequests", "challenges", "clusterissuers", "issuers", "orders"]
+    verbs: ["get", "list"]
