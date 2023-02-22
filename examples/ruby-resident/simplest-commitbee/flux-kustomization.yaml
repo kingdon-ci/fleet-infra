@@ -1,0 +1,24 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: simplest-commitbee
+  namespace: simplest-commitbee
+spec:
+  interval: 1m0s
+  targetNamespace: simplest-commitbee
+  path: ./deploy/bases/flux-helm
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: simplest-commitbee
+  patches:
+    - patch: |-
+        $patch: delete
+        apiVersion: v1
+        kind: Namespace
+        metadata:
+          name: not-used
+      target:
+        kind: Namespace
+        name: simplest-commitbee
