@@ -37,7 +37,7 @@ spec:
     - name: WEAVE_GITOPS_FEATURE_TENANCY
       value: "true"
     - name: WEAVE_GITOPS_FEATURE_CLUSTER
-      value: "false"
+      value: "true"
     - name: WEAVE_GITOPS_USERS_CLIENTS_TTL
       value: "30s"
     global:
