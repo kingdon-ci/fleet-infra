@@ -1,3 +1,4 @@
+#
 apiVersion: pipelines.weave.works/v1alpha1
 kind: Pipeline
 metadata:
