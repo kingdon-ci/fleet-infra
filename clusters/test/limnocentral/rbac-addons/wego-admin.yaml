@@ -107,11 +107,8 @@ rules:
     resources: ["alerts", "providers", "receivers"]
     verbs: ["get", "list"]
 
-  - apiGroups: ["poddisruptionbudgets"]
-    resources: ["policy"]
-    verbs: ["get", "list"]
-  - apiGroups: ["podsecuritypolicies"]
-    resources: ["policy"]
+  - apiGroups: ["policy"]
+    resources: ["poddisruptionbudgets", "podsecuritypolicies"]
     verbs: ["get", "list"]
   - apiGroups: ["rbac.authorization.k8s.io"]
     resources: ["clusterrolebindings", "clusterroles", "rolebindings", "roles"]
