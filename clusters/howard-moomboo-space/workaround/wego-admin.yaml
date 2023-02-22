@@ -1,8 +1,9 @@
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+kind: RoleBinding
 metadata:
   name: home-guests-cluster-role-binding-2
+  namespace: test
 subjects:
   - kind: Group
     name: kingdon-ci:home-guests
