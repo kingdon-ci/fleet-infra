@@ -14,18 +14,18 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: fleet-infra
+    name: flux-system
     namespace: flux-system
   patches:
-    - patch: |-
-        apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-        kind: Kustomization
-        metadata:
-          name: not-used
-        spec:
-          sourceRef:
-            name: flux-system
-      target:
-        kind: Kustomization
-        name: simplest-commitbee
-        namespace: ruby-test
+    #   - patch: |-
+    #       apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+    #       kind: Kustomization
+    #       metadata:
+    #         name: not-used
+    #       spec:
+    #         sourceRef:
+    #           name: flux-system
+    #     target:
+    #       kind: Kustomization
+    #       name: simplest-commitbee
+    #       namespace: ruby-test
