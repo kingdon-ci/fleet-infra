@@ -8,9 +8,9 @@ patches:
     kind: Deployment
     name: kustomize-controller
   patch: |-
-  - op: add
-    path: /spec/template/spec/containers/0/args/-
-    value: --requeue-dependency=3s
-  - op: add
-    path: /spec/template/spec/containers/0/args/0
-    value: --concurrent=6
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --requeue-dependency=3s
+    - op: add
+      path: /spec/template/spec/containers/0/args/0
+      value: --concurrent=6
