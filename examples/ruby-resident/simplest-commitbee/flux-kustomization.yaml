@@ -12,22 +12,22 @@ spec:
   sourceRef:
     kind: GitRepository
     name: simplest-commitbee
-  patches:
-    - patch: |-
-        $patch: delete
-        apiVersion: source.toolkit.fluxcd.io/v1beta2
-        kind: GitRepository
-        metadata:
-          name: not-used
-      target:
-        kind: GitRepository
-        name: simplest-commitbee
-    - patch: |-
-        $patch: delete
-        apiVersion: v1
-        kind: Namespace
-        metadata:
-          name: not-used
-      target:
-        kind: Namespace
-        name: simplest-commitbee
+  patches: []
+    # - patch: |-
+    #     $patch: delete
+    #     apiVersion: source.toolkit.fluxcd.io/v1beta2
+    #     kind: GitRepository
+    #     metadata:
+    #       name: not-used
+    #   target:
+    #     kind: GitRepository
+    #     name: simplest-commitbee
+    # - patch: |-
+    #     $patch: delete
+    #     apiVersion: v1
+    #     kind: Namespace
+    #     metadata:
+    #       name: not-used
+    #   target:
+    #     kind: Namespace
+    #     name: simplest-commitbee
