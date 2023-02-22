@@ -17,3 +17,15 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
+  patches:
+    - patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v1beta2
+        kind: HelmRelease
+        metadata:
+          name: not-used
+        spec:
+          suspend: false
+      target:
+        kind: HelmRelease
+        name: weave-gitops-enterprise
+        namespace: flux-system
