@@ -8,7 +8,7 @@ metadata:
   labels:
     templates.weave.works/template-name: cluster-template-development-plus-kubelogin
     templates.weave.works/template-namespace: default
-    weave.works/capi: bootstrap
+    # weave.works/capi: bootstrap
   name: limnocentral
   namespace: test
 spec:
