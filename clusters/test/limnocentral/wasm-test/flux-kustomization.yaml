@@ -8,6 +8,8 @@ spec:
   interval: 10m0s
   timeout: 1m0s
   suspend: true
+    # Reason: we haven't told the story about the Docker runtime yet
+    # (fault: wasm-spin-qs cannot run on the msigaming node, because ^)
   retryInterval: 1m30s
   targetNamespace: wasm-test
   path: ./examples/wasm-cluster-support
