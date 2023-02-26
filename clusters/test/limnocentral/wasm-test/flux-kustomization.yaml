@@ -12,7 +12,7 @@ spec:
     # (fault: wasm-spin-qs cannot run on the msigaming node, because ^)
   retryInterval: 1m30s
   targetNamespace: wasm-test
-  path: ./examples/wasm-cluster-support
+  path: ./examples/wasm/cluster-support
   prune: true
   sourceRef:
     kind: GitRepository
