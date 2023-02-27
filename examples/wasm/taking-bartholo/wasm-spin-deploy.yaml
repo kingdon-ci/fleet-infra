@@ -21,9 +21,7 @@ spec:
         app: wasm-spin-bart
     spec:
       containers:
-      - command:
-        - /
-        image: ghcr.io/kingdonb/taking-bartholo:test-e7c38533-1677455185
+      - image: ghcr.io/kingdonb/taking-bartholo:test-861e97b2-1677457726
         imagePullPolicy: Always
         name: spin-hello
         ports:
@@ -31,4 +29,5 @@ spec:
           name: http-web-svc
       dnsPolicy: ClusterFirst
       restartPolicy: Always
-      runtimeClassName: spin
+      # nodeSelector:
+      #   kwasm.sh/kwasm-provisioned: msigaming
