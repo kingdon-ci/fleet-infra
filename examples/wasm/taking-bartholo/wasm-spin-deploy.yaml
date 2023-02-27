@@ -27,7 +27,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: current-edition
-              key: content-hash
+              key: my-values.yaml
         imagePullPolicy: Always
         name: spin-hello
         ports:
