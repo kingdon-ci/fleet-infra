@@ -8,7 +8,7 @@ resources:
 images:
 - name: ghcr.io/kingdonb/taking-bartholo
   newName: ghcr.io/kingdonb/taking-bartholo
-  newTag: test-861e97b2-1677457726 # {"$imagepolicy": "flux-system:taking-bartholo"}
+  newTag: main-eb4d2f96-1677468420 # {"$imagepolicy": "flux-system:taking-bartholo"}
 
 configMapGenerator: # note: this is fraught if I ever needed this value, but
         # fortunately I won't need it! I just need it to flip over a deployment
