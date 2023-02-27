@@ -1,7 +1,6 @@
-replicaCount: 2
-resources:
-  limits:
-    memory: 256Mi
-  requests:
-    cpu: 100m
-    memory: 64Mi
+ingress:
+  hostname: bart.howard.moomboo.space
+  ingressClassName: public
+  tls: true
+  annotations:
+    cert-manager.io/cluster-issuer: production-letsencrypt
