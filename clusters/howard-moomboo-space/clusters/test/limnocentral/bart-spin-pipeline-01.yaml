@@ -1,0 +1,33 @@
+#
+apiVersion: pipelines.weave.works/v1alpha1
+kind: Pipeline
+metadata:
+  name: bart-spin-wasm
+  namespace: test
+spec:
+  promotion:
+    strategy:
+      pull-request:
+        type: "github"
+        url: "https://github.com/kingdon-ci/fleet-infra"
+        secretRef:
+          name: "github-promotion-credentials"
+  appRef:
+    apiVersion: helm.toolkit.fluxcd.io/v2beta1
+    kind: HelmRelease
+    name: wasm-test-bart
+  environments:
+    - name: dev
+      targets:
+        - namespace: wasm-test
+          clusterRef:
+            kind: GitopsCluster
+            name: limnocentral
+            namespace: test
+    - name: stage
+      targets:
+        - namespace: wasm-stage
+          clusterRef:
+            kind: GitopsCluster
+            name: limnocentral
+            namespace: test
