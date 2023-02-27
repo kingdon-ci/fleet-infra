@@ -1,4 +1,9 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: wasm-test
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: wasm-test
+# ---
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: wasm-stage
