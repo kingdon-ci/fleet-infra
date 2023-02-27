@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- wasm-spin-deploy.yaml
+- service.yaml
+- ingress.yaml
+
+images:
+- name: ghcr.io/kingdonb/taking-bartholo
+  newName: ghcr.io/kingdonb/taking-bartholo
+  newTag: test-861e97b2-1677457726 # {"$imagepolicy": "flux-system:taking-bartholo"}
+
+configMapGenerator: # note: this is fraught if I ever needed this value, but
+        # fortunately I won't need it! I just need it to flip over a deployment
+        # whenever it changes.
+  - name: current-edition
+    files:
+      - my-values.yaml
+
+configurations:
+  - kustomizeconfig.yaml

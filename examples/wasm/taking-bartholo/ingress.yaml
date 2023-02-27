@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wasm-spin-bart
+  namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: production-letsencrypt
+spec:
+  ingressClassName: public
+  rules:
+  - host: bart.howard.moomboo.space
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: wasm-spin-bart
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - bart.howard.moomboo.space
+    secretName: wasm-spin-bart-tls

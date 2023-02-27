@@ -21,7 +21,13 @@ spec:
         app: wasm-spin-bart
     spec:
       containers:
-      - image: ghcr.io/kingdonb/taking-bartholo:test-861e97b2-1677457726
+      - image: ghcr.io/kingdonb/taking-bartholo:test
+        env:
+        - name: CONTENT_HASH
+          valueFrom:
+            configMapKeyRef:
+              name: current-edition
+              key: content-hash
         imagePullPolicy: Always
         name: spin-hello
         ports:
