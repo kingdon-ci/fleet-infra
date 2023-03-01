@@ -2,12 +2,12 @@ apiVersion: gitops.weave.works/v1alpha1
 kind: GitopsCluster
 metadata:
   annotations:
-    templates.weave.works/create-request: '{"repository_url":"https://github.com/kingdon-ci/fleet-infra","head_branch":"wge-create-branch-bvh9co","title":"Creates
-      resource cluster-01","description":"This PR creates a cluster-template-development
-      instance","template_name":"cluster-template-development","parameter_values":{"CLUSTER_NAME":"cluster-01","K3S_VERSION":"v1.25.6-k3s1","NAMESPACE":"default"},"commit_message":"Creates
-      cluster-template-development instance","credentials":{},"values":[{"name":"external-secrets","version":"0.6.1","layer":"layer-0"},{"name":"flagger","version":"0.0.2","layer":"layer-2"},{"name":"kyverno","version":"0.0.5","layer":"layer-1"},{"name":"kyverno-policies","version":"0.0.5","layer":"layer-2"},{"name":"weave-policy-agent","version":"0.6.7","layer":"layer-1"}],"template_namespace":"vcluster","template_kind":"GitOpsTemplate"}'
+    templates.weave.works/create-request: '{"repository_url":"https://github.com/kingdon-ci/fleet-infra","head_branch":"wge-create-branch-kwbhfs","title":"Creates
+      resource cluster-01","description":"This PR creates a cluster-template-development-plus-kubelogin
+      instance","template_name":"cluster-template-development-plus-kubelogin","parameter_values":{"CLUSTER_NAME":"cluster-01","K3S_VERSION":"v1.25.6-k3s1","NAMESPACE":"default"},"commit_message":"Creates
+      cluster-template-development-plus-kubelogin instance","credentials":{},"values":[{"name":"cert-manager","version":"0.0.8","layer":"layer-0"},{"name":"external-secrets","version":"0.6.1","layer":"layer-0"},{"name":"flagger","version":"0.0.2","layer":"layer-2"},{"name":"kyverno","version":"0.0.5","layer":"layer-1"},{"name":"kyverno-policies","version":"0.0.5","layer":"layer-2"},{"name":"prometheus","version":"1.0.0","layer":"layer-1"}],"template_namespace":"vcluster","template_kind":"GitOpsTemplate"}'
   labels:
-    templates.weave.works/template-name: cluster-template-development
+    templates.weave.works/template-name: cluster-template-development-plus-kubelogin
     templates.weave.works/template-namespace: default
     weave.works/capi: bootstrap
   name: cluster-01
@@ -21,7 +21,7 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
   labels:
-    templates.weave.works/template-name: cluster-template-development
+    templates.weave.works/template-name: cluster-template-development-plus-kubelogin
     templates.weave.works/template-namespace: default
   name: cluster-01
   namespace: default
@@ -43,7 +43,7 @@ metadata:
     cluster.x-k8s.io/cluster-name: cluster-01
     k3s_version: 1.25.6-k3s1
     minor_k8s_version: "1.25"
-    templates.weave.works/template-name: cluster-template-development
+    templates.weave.works/template-name: cluster-template-development-plus-kubelogin
     templates.weave.works/template-namespace: default
   name: cluster-01
   namespace: default
@@ -55,6 +55,10 @@ spec:
     values: |-
       vcluster:
         image: "rancher/k3s:v1.25.6-k3s1"
+        extraArgs:
+        - --kube-apiserver-arg --oidc-issuer-url=https://dex.howard.moomboo.space
+        - --kube-apiserver-arg --oidc-client-id=wg-kubelogin
+        - --kube-apiserver-arg --oidc-groups-claim=groups
       syncer:
         extraArgs:
         - "--tls-san=cluster-01.turkey.local"
