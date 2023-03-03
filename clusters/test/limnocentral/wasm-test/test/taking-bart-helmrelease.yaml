@@ -7,12 +7,12 @@ metadata:
 spec:
   chart:
     spec:
-      chart: charts/bart
+      chart: bart
       reconcileStrategy: Revision
       sourceRef:
-        kind: GitRepository
-        name: bart-spin-git
-      version: '^6.0.0'
+        kind: HelmRepository
+        name: bart-chart
+      version: '^0.1.0'
   interval: 10m0s
   timeout: 30s
   releaseName: wasm-test-bart
