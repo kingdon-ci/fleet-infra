@@ -1,0 +1,21 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: bart-spin-git
+  namespace: wasm-stage
+spec:
+  interval: 30s
+  url: https://github.com/kingdonb/taking-bartholo.git
+  ref:
+    branch: main
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: bart-chart
+  namespace: wasm-stage
+spec:
+  interval: 1m0s
+  type: oci
+  url: oci://ghcr.io/kingdonb/taking-bartholo/helm

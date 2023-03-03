@@ -1,0 +1,25 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: wasm-stage-bart
+  namespace: wasm-stage
+spec:
+  chart:
+    spec:
+      chart: bart
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bart-chart
+      version: '^0.1.0'
+  interval: 10m0s
+  timeout: 30s
+  releaseName: wasm-test-bart
+  values:
+    ingress:
+      hostname: bart-stage.howard.moomboo.space
+      ingressClassName: public
+      tls: true
+      annotations:
+        cert-manager.io/cluster-issuer: production-letsencrypt

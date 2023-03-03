@@ -1,0 +1,6 @@
+ingress:
+  hostname: bart-stage.howard.moomboo.space
+  ingressClassName: public
+  tls: true
+  annotations:
+    cert-manager.io/cluster-issuer: production-letsencrypt
