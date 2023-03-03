@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: bart
-      reconcileStrategy: Revision
+      reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
         name: bart-chart
