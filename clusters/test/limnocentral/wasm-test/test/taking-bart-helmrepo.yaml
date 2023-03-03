@@ -18,4 +18,4 @@ metadata:
 spec:
   interval: 1m0s
   type: oci
-  url: oci://ghcr.io/kingdonb/taking-bartholo/helm/bart
+  url: oci://ghcr.io/kingdonb/taking-bartholo/helm
