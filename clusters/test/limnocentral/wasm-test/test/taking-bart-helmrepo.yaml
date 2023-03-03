@@ -8,7 +8,7 @@ spec:
   interval: 30s
   url: https://github.com/kingdonb/taking-bartholo.git
   ref:
-    branch: new-content
+    branch: main
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
