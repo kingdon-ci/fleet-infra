@@ -8,10 +8,10 @@ spec:
   chart:
     spec:
       chart: bart
-      reconcileStrategy: ChartVersion
+      reconcileStrategy: Revision
       sourceRef:
-        kind: HelmRepository
-        name: bart-chart
+        kind: GitRepository
+        name: bart-spin-git
       version: '^0.1.0'
   interval: 10m0s
   timeout: 30s
