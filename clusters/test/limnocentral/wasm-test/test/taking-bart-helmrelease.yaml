@@ -7,7 +7,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: bart
+      chart: charts/bart
       reconcileStrategy: Revision
       sourceRef:
         kind: GitRepository
