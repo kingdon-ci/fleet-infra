@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: bart-chart
-      version: '^0.1.0'
+      version: '^0.2.0'
   interval: 10m0s
   timeout: 30s
   releaseName: wasm-blog
