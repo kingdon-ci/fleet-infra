@@ -16,6 +16,8 @@ spec:
   interval: 10m0s
   timeout: 30s
   releaseName: wasm-blog
+  targetNamespace: wasm-test
+  storageNamespace: wasm-test
   values:
     ingress:
       hostname: bart.howard.moomboo.space
