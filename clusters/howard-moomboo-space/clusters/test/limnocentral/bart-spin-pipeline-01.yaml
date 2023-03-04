@@ -15,7 +15,7 @@ spec:
   appRef:
     apiVersion: helm.toolkit.fluxcd.io/v2beta1
     kind: HelmRelease
-    name: wasm-test-bart
+    name: wasm-blog
   environments:
     - name: dev
       targets:
