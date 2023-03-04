@@ -15,7 +15,7 @@ spec:
       version: '^0.1.0'
   interval: 10m0s
   timeout: 30s
-  releaseName: wasm-test-bart
+  releaseName: wasm-blog
   values:
     ingress:
       hostname: bart.howard.moomboo.space
