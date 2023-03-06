@@ -1,0 +1,76 @@
+apiVersion: gitops.weave.works/v1alpha1
+kind: GitopsCluster
+metadata:
+  annotations:
+    templates.weave.works/create-request: '{"repository_url":"https://github.com/kingdon-ci/fleet-infra","head_branch":"wge-create-branch-quqqwj","title":"Creates
+      resource dont-merge","description":"This PR creates a cluster-template-development-plus-kubelogin
+      instance","template_name":"cluster-template-development-plus-kubelogin","parameter_values":{"CLUSTER_NAME":"dont-merge","K3S_VERSION":"v1.24.10-k3s1","NAMESPACE":"default"},"commit_message":"Creates
+      cluster-template-development-plus-kubelogin instance","credentials":{},"values":[{"name":"flagger","version":"0.0.2","layer":"layer-2"}],"template_namespace":"vcluster","template_kind":"GitOpsTemplate"}'
+  labels:
+    templates.weave.works/template-name: cluster-template-development-plus-kubelogin
+    templates.weave.works/template-namespace: default
+    weave.works/capi: bootstrap
+  name: dont-merge
+  namespace: default
+spec:
+  capiClusterRef:
+    name: dont-merge
+
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    templates.weave.works/template-name: cluster-template-development-plus-kubelogin
+    templates.weave.works/template-namespace: default
+  name: dont-merge
+  namespace: default
+spec:
+  controlPlaneRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+    kind: VCluster
+    name: dont-merge
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+    kind: VCluster
+    name: dont-merge
+
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+kind: VCluster
+metadata:
+  labels:
+    cluster.x-k8s.io/cluster-name: dont-merge
+    k3s_version: 1.24.10-k3s1
+    minor_k8s_version: "1.24"
+    templates.weave.works/template-name: cluster-template-development-plus-kubelogin
+    templates.weave.works/template-namespace: default
+  name: dont-merge
+  namespace: default
+spec:
+  controlPlaneEndpoint:
+    host: dont-merge.turkey.local
+    port: 443
+  helmRelease:
+    values: |-
+      vcluster:
+        image: "rancher/k3s:v1.24.10-k3s1"
+        extraArgs:
+        - --kube-apiserver-arg --oidc-issuer-url=https://dex.howard.moomboo.space
+        - --kube-apiserver-arg --oidc-client-id=wg-kubelogin
+        - --kube-apiserver-arg --oidc-groups-claim=groups
+      syncer:
+        extraArgs:
+        - "--tls-san=dont-merge.turkey.local"
+      sync:
+        nodes:
+          enabled: true
+        persistentvolumes:
+          enabled: true
+        # If you want to create custom storage classes
+        # inside the vcluster.
+        storageclasses:
+          enabled: true
+        ingresses:
+          enabled: true
+  kubernetesVersion: "1.24"
