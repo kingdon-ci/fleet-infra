@@ -24,7 +24,7 @@ spec:
         metadata:
           name: not-used
         spec:
-          suspend: false
+          suspend: true
       target:
         kind: HelmRelease
         name: weave-gitops-enterprise
