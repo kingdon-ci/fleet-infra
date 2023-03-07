@@ -14,7 +14,7 @@ patches:
     - op: add
       path: /spec/template/spec/containers/0/args/0
       value: --concurrent=6
-  - patch: |
+- patch: |
       apiVersion: apps/v1
       kind: Deployment
       metadata:
@@ -33,6 +33,6 @@ patches:
                 - --log-encoding=json
                 - --enable-leader-election
                 - --feature-gates=DetectDrift=True
-    target:
-      kind: Deployment
-      name: "helm-controller"
+  target:
+    kind: Deployment
+    name: "helm-controller"
