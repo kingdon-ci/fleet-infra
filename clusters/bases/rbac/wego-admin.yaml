@@ -3,7 +3,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: wego-admin-cluster-role-binding
-  labels:
+  annotations:
     meta.helm.sh/release-name: ww-gitops
     meta.helm.sh/release-namespace: flux-system
     app.kubernetes.io/managed-by: Helm
@@ -20,7 +20,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: wego-admin-cluster-role
-  labels:
+  annotations:
     meta.helm.sh/release-name: ww-gitops
     meta.helm.sh/release-namespace: flux-system
     app.kubernetes.io/managed-by: Helm
