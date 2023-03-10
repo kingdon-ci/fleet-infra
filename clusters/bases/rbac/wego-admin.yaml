@@ -7,6 +7,10 @@ metadata:
     meta.helm.sh/release-name: ww-gitops
     meta.helm.sh/release-namespace: flux-system
     app.kubernetes.io/managed-by: Helm
+  labels:
+    meta.helm.sh/release-name: ww-gitops
+    meta.helm.sh/release-namespace: flux-system
+    app.kubernetes.io/managed-by: Helm
 subjects:
   - kind: User
     name: wego-admin
@@ -21,6 +25,10 @@ kind: ClusterRole
 metadata:
   name: wego-admin-cluster-role
   annotations:
+    meta.helm.sh/release-name: ww-gitops
+    meta.helm.sh/release-namespace: flux-system
+    app.kubernetes.io/managed-by: Helm
+  labels:
     meta.helm.sh/release-name: ww-gitops
     meta.helm.sh/release-namespace: flux-system
     app.kubernetes.io/managed-by: Helm
