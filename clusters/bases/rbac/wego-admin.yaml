@@ -20,6 +20,10 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: wego-admin-cluster-role
+  labels:
+    meta.helm.sh/release-name: ww-gitops
+    meta.helm.sh/release-namespace: flux-system
+    app.kubernetes.io/managed-by: Helm
 rules:
   - apiGroups: [""]
     resources: ["secrets", "pods"]
