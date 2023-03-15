@@ -8,10 +8,10 @@ spec:
   chart:
     spec:
       interval: 30s
-      chart: bart
+      chart: charts/bart
       reconcileStrategy: ChartVersion
       sourceRef:
-        kind: HelmRepository
+        kind: GitRepository
         name: bart-chart
       version: '^0.2.0'
   interval: 10m0s
