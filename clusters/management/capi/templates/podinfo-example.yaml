@@ -10,6 +10,12 @@ spec:
   description: Simple example app
   renderType: templating
   params:
+    - name: CLUSTER_NAME
+      description: Kubernetes version to use for the cluster
+      options:
+      - cluster-01
+      - cluster-02
+    required: true
     - name: GITHUB_USER
       required: true
       description: Git owner containing the repository
