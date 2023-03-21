@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - capv-template.yaml
 - capv-template-kubelogin.yaml
+- podinfo-example.yaml
