@@ -1,0 +1,56 @@
+apiVersion: templates.weave.works/v1alpha2
+kind: GitOpsTemplate
+metadata:
+  name: app-example
+  namespace: vcluster
+  annotations:
+  labels:
+    weave.works/template-type: application
+spec:
+  description: Simple example app
+  renderType: templating
+  params:
+    - name: GITHUB_USER
+      required: true
+      description: Git owner containing the repository
+      default: "stefanprodan"
+    - name: GIT_REPO_NAME
+      required: true
+      description: Git repository containing the application
+      default: "podinfo"
+    - name: GIT_BRANCH
+      required: true
+      description: Git branch to deploy from
+      default: "master"
+    - name: NAMESPACE
+      required: true
+      description: Deploy to namespace
+      default: "default"
+    - name: PATH_TO_APPLY
+      required: true
+      description: Path in the Git repository
+      default: "./kustomize/"
+  resourcetemplates:
+    - content:
+        - apiVersion: source.toolkit.fluxcd.io/v1beta2
+          kind: GitRepository
+          metadata:
+            name: "{{ .params.GIT_REPO_NAME }}"
+            namespace: "{{ .params.NAMESPACE }}"
+          spec:
+            interval: 20s
+            url: "https://github.com/{{ .params.GITHUB_USER}}/{{ .params.GIT_REPO_NAME }}"
+            ref:
+              branch: "{{ .params.GIT_BRANCH }}"
+        - apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+          kind: Kustomization
+          metadata:
+            name: "{{ .params.GIT_REPO_NAME }}"
+            namespace: "{{ .params.NAMESPACE }}"
+          spec:
+            interval: 30s
+            path: "{{ .params.PATH_TO_APPLY }}"
+            prune: true
+            sourceRef:
+                kind: GitRepository
+                name: "{{ .params.GIT_REPO_NAME }}"
