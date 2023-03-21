@@ -24,6 +24,7 @@ metadata:
 spec:
   interval: 30s
   path: ./kustomize/
+  targetNamespace: default
   prune: true
   sourceRef:
     kind: GitRepository
