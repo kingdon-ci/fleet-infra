@@ -55,6 +55,7 @@ spec:
             namespace: "{{ .params.NAMESPACE }}"
           spec:
             interval: 30s
+            targetNamespace: "{{ .params.NAMESPACE }}"
             path: "{{ .params.PATH_TO_APPLY }}"
             prune: true
             sourceRef:
