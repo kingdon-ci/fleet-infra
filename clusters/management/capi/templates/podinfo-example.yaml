@@ -15,7 +15,7 @@ spec:
       options:
       - cluster-01
       - cluster-02
-    required: true
+      required: true
     - name: GITHUB_USER
       required: true
       description: Git owner containing the repository
