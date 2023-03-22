@@ -1,71 +1,33 @@
-apiVersion: gitops.weave.works/v1alpha1
-kind: GitopsCluster
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
 metadata:
   labels:
-    templates.weave.works/template-name: cluster-template-development-plus-kubelogin
-    templates.weave.works/template-namespace: ""
-    weave.works/capi: bootstrap
+    templates.weave.works/template-name: app-example
+    templates.weave.works/template-namespace: default
   name: cluster-02
   namespace: default
+  annotations:
+    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/kingdon-ci/fleet-infra\",\"head_branch\":\"wge-create-branch-qpvvg\",\"title\":\"Create resource \",\"description\":\"This PR creates a app-example instance\",\"template_name\":\"app-example\",\"parameter_values\":{\"GIT_BRANCH\":\"master\",\"GIT_REPO_NAME\":\"podinfo\",\"NAMESPACE\":\"default\",\"PATH_TO_APPLY\":\"./kustomize/\",\"RESOURCE_NAME\":\"cluster-02\"},\"commit_message\":\"Create app-example instance\",\"credentials\":{},\"template_namespace\":\"vcluster\",\"template_kind\":\"GitOpsTemplate\"}"
 spec:
-  capiClusterRef:
-    name: cluster-02
+  interval: 20s
+  ref:
+    branch: master
+  url: https://github.com/<no value>/podinfo
 
 ---
-apiVersion: cluster.x-k8s.io/v1beta1
-kind: Cluster
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
 metadata:
   labels:
-    templates.weave.works/template-name: cluster-template-development-plus-kubelogin
-    templates.weave.works/template-namespace: ""
+    templates.weave.works/template-name: app-example
+    templates.weave.works/template-namespace: default
   name: cluster-02
   namespace: default
 spec:
-  controlPlaneRef:
-    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
-    kind: VCluster
-    name: cluster-02
-  infrastructureRef:
-    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
-    kind: VCluster
-    name: cluster-02
-
----
-apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
-kind: VCluster
-metadata:
-  labels:
-    cluster.x-k8s.io/cluster-name: cluster-02
-    k3s_version: 1.26.1-k3s1
-    minor_k8s_version: "1.26"
-    templates.weave.works/template-name: cluster-template-development-plus-kubelogin
-    templates.weave.works/template-namespace: ""
-  name: cluster-02
-  namespace: default
-spec:
-  controlPlaneEndpoint:
-    host: cluster-02.turkey.local
-    port: 443
-  helmRelease:
-    values: |-
-      vcluster:
-        image: "rancher/k3s:v1.26.1-k3s1"
-        extraArgs:
-        - --kube-apiserver-arg --oidc-issuer-url=https://dex.howard.moomboo.space
-        - --kube-apiserver-arg --oidc-client-id=wg-kubelogin
-        - --kube-apiserver-arg --oidc-groups-claim=groups
-      syncer:
-        extraArgs:
-        - "--tls-san=cluster-02.turkey.local"
-      sync:
-        nodes:
-          enabled: true
-        persistentvolumes:
-          enabled: true
-        # If you want to create custom storage classes
-        # inside the vcluster.
-        storageclasses:
-          enabled: true
-        ingresses:
-          enabled: true
-  kubernetesVersion: "1.26"
+  interval: 30s
+  path: ./kustomize/
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: podinfo
+  targetNamespace: default
