@@ -32,19 +32,19 @@ spec:
       required: true
       description: Deploy to namespace
       default: "default"
-    - name: PATH_TO_APPLY
+    - name: OVERLAY
       required: true
-      description: Path in the Git repository
+      description: Deploy Overlay in the Git repository to apply
       options:
-        - ./overlays/automate/
-        - ./overlays/dev/
-        - ./overlays/experiment/
-        - ./overlays/flux-oci/
-        - ./overlays/helm-oci/
-        - ./overlays/production/
-        - ./overlays/staging/
-        - ./overlays/test-example/
-      default: "./overlays/flux-oci/"
+        - automate
+        - dev
+        - experiment
+        - flux-oci
+        - helm-oci
+        - production
+        - staging
+        - test-example
+      default: "flux-oci"
   resourcetemplates:
     - path: clusters/default/cluster-02/{{ .params.RESOURCE_NAME }}-app.yaml
       content:
@@ -66,7 +66,7 @@ spec:
           spec:
             interval: 30s
             targetNamespace: "{{ .params.NAMESPACE }}"
-            path: "{{ .params.PATH_TO_APPLY }}"
+            path: "./deploy/overlays/{{ .params.OVERLAY }}"
             prune: true
             sourceRef:
               kind: GitRepository
