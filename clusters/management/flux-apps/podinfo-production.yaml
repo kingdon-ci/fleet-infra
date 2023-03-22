@@ -1,33 +1,31 @@
 apiVersion: templates.weave.works/v1alpha2
 kind: GitOpsTemplate
 metadata:
-  name: app-example
+  name: prod-example
   namespace: vcluster
   annotations:
   labels:
     weave.works/template-type: application
 spec:
-  description: Simple example app
+  description: Production example 
   renderType: templating
   params:
-    - name: CLUSTER_NAME
-      description: Kubernetes version to use for the cluster
-      options:
-      - cluster-01
-      - cluster-02
+    - name: RESOURCE_NAME
+      description: Unique name for the created resources
+      default: "podinfo-prod"
       required: true
     - name: GITHUB_USER
       required: true
       description: Git owner containing the repository
-      default: "stefanprodan"
+      default: "kingdon-ci"
     - name: GIT_REPO_NAME
       required: true
       description: Git repository containing the application
-      default: "podinfo"
+      default: "fleet-infra"
     - name: GIT_BRANCH
       required: true
       description: Git branch to deploy from
-      default: "master"
+      default: "main"
     - name: NAMESPACE
       required: true
       description: Deploy to namespace
@@ -35,7 +33,7 @@ spec:
     - name: PATH_TO_APPLY
       required: true
       description: Path in the Git repository
-      default: "./kustomize/"
+      default: "./examples/production-basic"
   resourcetemplates:
     - content:
         - apiVersion: source.toolkit.fluxcd.io/v1beta2
