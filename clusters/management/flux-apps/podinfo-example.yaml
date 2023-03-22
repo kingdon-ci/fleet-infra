@@ -18,8 +18,6 @@ spec:
       required: true
     - name: USER
       description: Git owner containing the repository
-      options: [kingdonb,stefanprodan,"kingdon-ci",juozasg]
-      default: "stefanprodan"
       required: true
     - name: REPO
       required: true
