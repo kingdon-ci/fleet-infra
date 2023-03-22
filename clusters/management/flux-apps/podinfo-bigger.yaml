@@ -13,16 +13,16 @@ spec:
   params:
     - name: RESOURCE_NAME
       description: Unique name for the created resources
-      options: [example-01,example-02]
+      options: [example-02]
       default: example-02
       required: true
-    - name: REPO
+    - name: REPO_URL
       required: true
       description: Git repository containing the application
       default: "https://github.com/kingdonb/podinfo"
     - name: REPO_NAME
       required: true
-      description: Git repository containing the application
+      description: Git repository containing the application (as a slug)
       default: "podinfo"
     - name: GIT_BRANCH
       required: true
@@ -48,6 +48,10 @@ spec:
   resourcetemplates:
     - path: clusters/default/cluster-02/{{ .params.RESOURCE_NAME }}-app.yaml
       content:
+        - apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: "{{ .params.REPO_NAME }}"
         - apiVersion: source.toolkit.fluxcd.io/v1beta2
           kind: GitRepository
           metadata:
@@ -55,7 +59,7 @@ spec:
             namespace: "{{ .params.NAMESPACE }}"
           spec:
             interval: 20s
-            url: '{{ .params.REPO }}'
+            url: '{{ .params.REPO_URL }}'
             ref:
               branch: "{{ .params.GIT_BRANCH }}"
         - apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
@@ -65,7 +69,6 @@ spec:
             namespace: "{{ .params.NAMESPACE }}"
           spec:
             interval: 30s
-            # targetNamespace: "{{ .params.NAMESPACE }}"
             path: "./deploy/overlays/{{ .params.OVERLAY }}"
             prune: true
             sourceRef:
