@@ -30,7 +30,7 @@ spec:
       default: "master"
     - name: NAMESPACE
       required: true
-      description: Deploy to namespace
+      description: Deploy flux resources to namespace
       default: "default"
     - name: OVERLAY
       required: true
@@ -65,7 +65,7 @@ spec:
             namespace: "{{ .params.NAMESPACE }}"
           spec:
             interval: 30s
-            targetNamespace: "{{ .params.NAMESPACE }}"
+            # targetNamespace: "{{ .params.NAMESPACE }}"
             path: "./deploy/overlays/{{ .params.OVERLAY }}"
             prune: true
             sourceRef:
