@@ -19,6 +19,7 @@ spec:
     - name: GITHUB_USER
       required: true
       description: Git owner containing the repository
+      options: [kingdonb,stefanprodan,kingdon-ci,juozasg]
       default: "stefanprodan"
     - name: GIT_REPO_NAME
       required: true
@@ -45,7 +46,7 @@ spec:
             namespace: "{{ .params.NAMESPACE }}"
           spec:
             interval: 20s
-            url: "https://github.com/{{ .params.GITHUB_USER}}/{{ .params.GIT_REPO_NAME }}"
+            url: "https://github.com/{{ .params.GITHUB_USER }}/{{ .params.GIT_REPO_NAME }}"
             ref:
               branch: "{{ .params.GIT_BRANCH }}"
         - apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
