@@ -19,7 +19,7 @@ spec:
     - name: GIT_REPO_USER
       required: true
       description: Git owner containing the repository
-      options: [kingdonb,stefanprodan,kingdon-ci,juozasg]
+      options: [kingdonb,stefanprodan,"kingdon-ci",juozasg]
       default: "stefanprodan"
     - name: GIT_REPO_NAME
       required: true
