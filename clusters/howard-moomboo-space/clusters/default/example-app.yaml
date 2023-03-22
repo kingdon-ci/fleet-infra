@@ -1,0 +1,37 @@
+apiVersion: pipelines.weave.works/v1alpha1
+kind: Pipeline
+metadata:
+  labels:
+    templates.weave.works/template-name: pipeline-view
+    templates.weave.works/template-namespace: default
+  name: example-app
+  namespace: flux-system
+  annotations:
+    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/kingdon-ci/fleet-infra\",\"head_branch\":\"wge-create-branch-m8lrx8\",\"title\":\"Create resource example-app\",\"description\":\"This PR creates a pipeline-view instance\",\"template_name\":\"pipeline-view\",\"parameter_values\":{\"APP_NAME\":\"podinfo\",\"APP_NAMESPACE\":\"flux-system\",\"DEV_CLUSTER_NAME\":\"cluster-01\",\"DEV_CLUSTER_NAMESPACE\":\"clusters\",\"PROD_CLUSTER_NAME\":\"cluster-02\",\"PROD_CLUSTER_NAMESPACE\":\"clusters\",\"RESOURCE_NAME\":\"example-app\",\"RESOURCE_NAMESPACE\":\"flux-system\",\"TEST_CLUSTER_NAME\":\"cluster-01\",\"TEST_CLUSTER_NAMESPACE\":\"clusters\"},\"commit_message\":\"Create pipeline-view instance\",\"credentials\":{},\"template_namespace\":\"flux-system\",\"template_kind\":\"GitOpsTemplate\"}"
+spec:
+  appRef:
+    apiVersion: helm.toolkit.fluxcd.io/v2beta1
+    kind: HelmRelease
+    name: podinfo
+  environments:
+  - name: dev
+    targets:
+    - clusterRef:
+        kind: GitopsCluster
+        name: cluster-01
+        namespace: clusters
+      namespace: flux-system
+  - name: test
+    targets:
+    - clusterRef:
+        kind: GitopsCluster
+        name: cluster-01
+        namespace: clusters
+      namespace: flux-system
+  - name: prod
+    targets:
+    - clusterRef:
+        kind: GitopsCluster
+        name: cluster-02
+        namespace: clusters
+      namespace: flux-system
