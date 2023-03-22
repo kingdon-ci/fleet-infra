@@ -1,0 +1,33 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  labels:
+    templates.weave.works/template-name: app-example
+    templates.weave.works/template-namespace: default
+  name: example-01
+  namespace: default
+  annotations:
+    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/kingdon-ci/fleet-infra.git\",\"head_branch\":\"wge-create-branch-zzfwbi\",\"title\":\"Create resource \",\"description\":\"This PR creates a app-example instance\",\"template_name\":\"app-example\",\"parameter_values\":{\"GIT_BRANCH\":\"master\",\"NAMESPACE\":\"default\",\"PATH_TO_APPLY\":\"./kustomize/\",\"REPO\":\"https://github.com/stefanprodan/podinfo\",\"RESOURCE_NAME\":\"example-01\"},\"commit_message\":\"Create app-example instance\",\"credentials\":{},\"template_namespace\":\"vcluster\",\"template_kind\":\"GitOpsTemplate\"}"
+spec:
+  interval: 20s
+  ref:
+    branch: master
+  url: https://github.com/stefanprodan/podinfo
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  labels:
+    templates.weave.works/template-name: app-example
+    templates.weave.works/template-namespace: default
+  name: example-01
+  namespace: default
+spec:
+  interval: 30s
+  path: ./kustomize/
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: example-01
+  targetNamespace: default
