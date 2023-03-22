@@ -37,7 +37,8 @@ spec:
       description: Path in the Git repository
       default: "./kustomize/"
   resourcetemplates:
-    - content:
+    - path: clusters/default/cluster-02/{{ .params.RESOURCE_NAME }}-app.yaml
+      content:
         - apiVersion: source.toolkit.fluxcd.io/v1beta2
           kind: GitRepository
           metadata:
@@ -59,5 +60,5 @@ spec:
             path: "{{ .params.PATH_TO_APPLY }}"
             prune: true
             sourceRef:
-                kind: GitRepository
-                name: "{{ .params.REPO_NAME }}"
+              kind: GitRepository
+              name: "{{ .params.RESOURCE_NAME }}"
