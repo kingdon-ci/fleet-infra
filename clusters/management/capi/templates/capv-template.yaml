@@ -7,7 +7,7 @@ metadata:
     templates.weave.works/add-common-bases: "true"
     templates.weave.works/inject-prune-annotations: "true"
     # templates.weave.works/profiles-enabled: "true"
-    templates.weave.works/kustomizations-enabled: "true"
+    templates.weave.works/kustomizations-enabled: "false"
     # templates.weave.works/credentials-enabled: "true"
   labels:
     weave.works/template-type: cluster
