@@ -6,14 +6,14 @@ metadata:
   annotations:
     templates.weave.works/kustomizations-enabled: "true"
   labels:
-    weave.works/template-type: application
+    weave.works/template-type: cluster
 spec:
-  description: Production example 
+  description: Production example
   renderType: templating
   params:
-    - name: RESOURCE_NAME
+    - name: CLUSTER_NAME
       description: Unique name for the created resources
-      default: "podinfo-prod"
+      options: [cluster-01,cluster-02]
       required: true
     - name: GITHUB_USER
       required: true
