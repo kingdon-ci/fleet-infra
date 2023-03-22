@@ -13,8 +13,8 @@ spec:
   params:
     - name: RESOURCE_NAME
       description: Unique name for the created resources
-      options: [cluster-01,cluster-02]
-      default: cluster-02
+      options: [example-01,example-02]
+      default: example-02
       required: true
     - name: GITHUB_USER
       required: true
