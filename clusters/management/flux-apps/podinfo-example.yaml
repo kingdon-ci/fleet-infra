@@ -16,12 +16,12 @@ spec:
       options: [example-01,example-02]
       default: example-02
       required: true
-    - name: GIT_REPO_USER
-      required: true
+    - name: USER
       description: Git owner containing the repository
       options: [kingdonb,stefanprodan,"kingdon-ci",juozasg]
       default: "stefanprodan"
-    - name: GIT_REPO_NAME
+      required: true
+    - name: REPO
       required: true
       description: Git repository containing the application
       default: "podinfo"
@@ -46,7 +46,7 @@ spec:
             namespace: "{{ .params.NAMESPACE }}"
           spec:
             interval: 20s
-            url: "https://github.com/{{ .params.GIT_REPO_USER }}/{{ .params.GIT_REPO_NAME }}"
+            url: 'https://github.com/{{ .params.USER }}/{{ .params.REPO }}'
             ref:
               branch: "{{ .params.GIT_BRANCH }}"
         - apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
