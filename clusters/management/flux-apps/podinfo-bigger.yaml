@@ -8,7 +8,7 @@ metadata:
   labels:
     weave.works/template-type: application
 spec:
-  description: Simple example app
+  description: Another simple example app
   renderType: templating
   params:
     - name: RESOURCE_NAME
