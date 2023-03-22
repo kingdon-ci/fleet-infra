@@ -4,7 +4,7 @@ metadata:
   name: prod-example
   namespace: vcluster
   annotations:
-    templates.weave.works/kustomizations-enabled: "true"
+    # templates.weave.works/kustomizations-enabled: "true"
   labels:
     weave.works/template-type: cluster
 spec:
