@@ -6,14 +6,15 @@ metadata:
   annotations:
     # templates.weave.works/kustomizations-enabled: "true"
   labels:
-    weave.works/template-type: cluster
+    weave.works/template-type: application
 spec:
   description: Simple example app
   renderType: templating
   params:
-    - name: CLUSTER_NAME
+    - name: RESOURCE_NAME
       description: Unique name for the created resources
       options: [cluster-01,cluster-02]
+      default: cluster-02
       required: true
     - name: GITHUB_USER
       required: true
@@ -40,7 +41,7 @@ spec:
         - apiVersion: source.toolkit.fluxcd.io/v1beta2
           kind: GitRepository
           metadata:
-            name: "{{ .params.GIT_REPO_NAME }}"
+            name: "{{ .params.RESOURCE_NAME }}"
             namespace: "{{ .params.NAMESPACE }}"
           spec:
             interval: 20s
@@ -50,7 +51,7 @@ spec:
         - apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
           kind: Kustomization
           metadata:
-            name: "{{ .params.GIT_REPO_NAME }}"
+            name: "{{ .params.RESOURCE_NAME }}"
             namespace: "{{ .params.NAMESPACE }}"
           spec:
             interval: 30s
