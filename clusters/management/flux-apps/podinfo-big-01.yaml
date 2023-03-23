@@ -1,28 +1,28 @@
 apiVersion: templates.weave.works/v1alpha2
 kind: GitOpsTemplate
 metadata:
-  name: app-example-01
+  name: big-example-for-cluster-01
   namespace: vcluster
   annotations:
     # templates.weave.works/kustomizations-enabled: "true"
   labels:
     weave.works/template-type: application
 spec:
-  description: Simple example app
+  description: Another simple example app
   renderType: templating
   params:
     - name: RESOURCE_NAME
       description: Unique name for the created resources
-      options: [example-01]
-      default: example-01
+      options: [example-02b]
+      default: example-02b
       required: true
-    - name: REPO
+    - name: REPO_URL
       required: true
       description: Git repository containing the application
-      default: "https://github.com/stefanprodan/podinfo"
+      default: "https://github.com/kingdonb/podinfo"
     - name: REPO_NAME
       required: true
-      description: Git repository containing the application
+      description: Git repository containing the application (as a slug)
       default: "podinfo"
     - name: GIT_BRANCH
       required: true
@@ -30,15 +30,28 @@ spec:
       default: "master"
     - name: NAMESPACE
       required: true
-      description: Deploy to namespace
+      description: Deploy flux resources to namespace
       default: "default"
-    - name: PATH_TO_APPLY
+    - name: OVERLAY
       required: true
-      description: Path in the Git repository
-      default: "./kustomize/"
+      description: Deploy Overlay in the Git repository to apply
+      options:
+        - automate
+        - dev
+        - experiment
+        - flux-oci
+        - helm-oci
+        - production
+        - staging
+        - test-example
+      default: "flux-oci"
   resourcetemplates:
-    - path: clusters/default/cluster-02/{{ .params.RESOURCE_NAME }}-app.yaml
+    - path: clusters/default/cluster-01/{{ .params.RESOURCE_NAME }}-app.yaml
       content:
+        - apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: "{{ .params.REPO_NAME }}"
         - apiVersion: source.toolkit.fluxcd.io/v1beta2
           kind: GitRepository
           metadata:
@@ -46,7 +59,7 @@ spec:
             namespace: "{{ .params.NAMESPACE }}"
           spec:
             interval: 20s
-            url: '{{ .params.REPO }}'
+            url: '{{ .params.REPO_URL }}'
             ref:
               branch: "{{ .params.GIT_BRANCH }}"
         - apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
@@ -56,8 +69,7 @@ spec:
             namespace: "{{ .params.NAMESPACE }}"
           spec:
             interval: 30s
-            targetNamespace: "{{ .params.NAMESPACE }}"
-            path: "{{ .params.PATH_TO_APPLY }}"
+            path: "./deploy/overlays/{{ .params.OVERLAY }}"
             prune: true
             sourceRef:
               kind: GitRepository

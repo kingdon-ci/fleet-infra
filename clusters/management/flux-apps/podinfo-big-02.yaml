@@ -1,7 +1,7 @@
 apiVersion: templates.weave.works/v1alpha2
 kind: GitOpsTemplate
 metadata:
-  name: big-example
+  name: big-example-for-cluster-02
   namespace: vcluster
   annotations:
     # templates.weave.works/kustomizations-enabled: "true"
