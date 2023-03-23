@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    templates.weave.works/template-name: big-example-for-cluster-02
+    templates.weave.works/template-namespace: default
+  name: podinfo
+  namespace: default
+  annotations:
+    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/kingdon-ci/fleet-infra\",\"head_branch\":\"wge-create-branch-umj3nn\",\"title\":\"Create resource \",\"description\":\"This PR creates a big-example-for-cluster-02 instance\",\"template_name\":\"big-example-for-cluster-02\",\"parameter_values\":{\"GIT_BRANCH\":\"master\",\"NAMESPACE\":\"default\",\"OVERLAY\":\"flux-oci\",\"REPO_NAME\":\"podinfo\",\"REPO_URL\":\"https://github.com/kingdonb/podinfo\",\"RESOURCE_NAME\":\"example-02\"},\"commit_message\":\"Create big-example-for-cluster-02 instance\",\"credentials\":{},\"template_namespace\":\"vcluster\",\"template_kind\":\"GitOpsTemplate\"}"
+
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  labels:
+    templates.weave.works/template-name: big-example-for-cluster-02
+    templates.weave.works/template-namespace: default
+  name: example-02
+  namespace: default
+spec:
+  interval: 20s
+  ref:
+    branch: master
+  url: https://github.com/kingdonb/podinfo
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  labels:
+    templates.weave.works/template-name: big-example-for-cluster-02
+    templates.weave.works/template-namespace: default
+  name: example-02
+  namespace: default
+spec:
+  interval: 30s
+  path: ./deploy/overlays/flux-oci
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: example-02
