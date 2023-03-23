@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
 - quickstart-templates.yaml
 - podinfo-example.yaml
-- podinfo-big-01.yaml
+#- podinfo-big-01.yaml
 - podinfo-big-02.yaml
 # - podinfo-production.yaml
