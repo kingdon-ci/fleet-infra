@@ -6,8 +6,7 @@ metadata:
   namespace: monitoring
 spec:
   dependsOn:
-  - kind: Deployment
-    name: monitoring-stack
+  - name: monitoring-stack
     namespace: monitoring
   interval: 30s
   path: ./manifests/monitoring/loki-stack
