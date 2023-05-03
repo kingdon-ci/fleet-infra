@@ -1,23 +1,23 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    cert-manager.io/cluster-issuer: production-letsencrypt
-  name: podinfo
-spec:
-  ingressClassName: public
-  rules:
-  - host: podinfo-test.hephy.pro
-    http:
-      paths:
-      - backend:
-          service:
-            name: podinfo
-            port:
-              number: 9898
-        path: /
-        pathType: Prefix
-  tls:
-  - hosts:
-    - podinfo-test.hephy.pro
-    secretName: podinfo-tls
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   annotations:
+#     cert-manager.io/cluster-issuer: production-letsencrypt
+#   name: podinfo
+# spec:
+#   ingressClassName: public
+#   rules:
+#   - host: podinfo-test.hephy.pro
+#     http:
+#       paths:
+#       - backend:
+#           service:
+#             name: podinfo
+#             port:
+#               number: 9898
+#         path: /
+#         pathType: Prefix
+#   tls:
+#   - hosts:
+#     - podinfo-test.hephy.pro
+#     secretName: podinfo-tls
