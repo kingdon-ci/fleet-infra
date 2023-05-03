@@ -1,0 +1,19 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: loki-stack
+  namespace: monitoring
+spec:
+  dependsOn:
+  - kind: Deployment
+    name: monitoring-stack
+    namespace: monitoring
+  interval: 30s
+  path: ./manifests/monitoring/loki-stack
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: monitoring
+  timeout: 5m0s
+  wait: true

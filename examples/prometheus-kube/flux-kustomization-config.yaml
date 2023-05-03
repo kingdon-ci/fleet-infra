@@ -16,3 +16,4 @@ spec:
     kind: GitRepository
     name: monitoring
     namespace: monitoring
+  wait: true
