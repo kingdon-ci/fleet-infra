@@ -1,0 +1,27 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: podinfo-canary
+  namespace: test
+spec:
+  endpoints:
+  - path: /metrics
+    port: http
+    interval: 5s
+  selector:
+    matchLabels:
+      app: podinfo-canary
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: podinfo-primary
+  namespace: test
+spec:
+  endpoints:
+    - path: /metrics
+      port: http
+      interval: 5s
+  selector:
+    matchLabels:
+      app: podinfo

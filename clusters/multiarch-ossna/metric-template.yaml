@@ -1,0 +1,44 @@
+apiVersion: flagger.app/v1beta1
+kind: MetricTemplate
+metadata:
+  name: latency
+  namespace: test
+spec:
+  provider:
+    address: http://kube-prometheus-stack-prometheus.monitoring:9090
+    type: prometheus
+  query: |
+    histogram_quantile(0.99,
+      sum(
+        rate(
+          http_request_duration_seconds_bucket{
+            namespace="{{ namespace }}",
+            job="{{ target }}-canary"
+          }[{{ interval }}]
+        )
+      ) by (le)
+    )
+---
+apiVersion: flagger.app/v1beta1
+kind: MetricTemplate
+metadata:
+  name: error-rate
+  namespace: test
+spec:
+  provider:
+    address: http://kube-prometheus-stack-prometheus.monitoring:9090
+    type: prometheus
+  query: |
+    100 - rate(
+      http_requests_total{
+        namespace="{{ namespace }}",
+        job="{{ target }}-canary",
+        status!~"5.*"
+      }[{{ interval }}])
+    /
+    rate(
+      http_requests_total{
+        namespace="{{ namespace }}",
+        job="{{ target }}-canary"
+      }[{{ interval }}]
+    ) * 100
