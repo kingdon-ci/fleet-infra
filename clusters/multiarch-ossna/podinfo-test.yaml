@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: production-letsencrypt
-    kubernetes.io/ingress.class: "public"
   name: podinfo
   namespace: test
   labels:
