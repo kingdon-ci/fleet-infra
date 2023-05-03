@@ -7,7 +7,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-  - host: podinfo.example.com
+  - host: podinfo-test.hephy.pro
     http:
       paths:
       - backend:
@@ -19,5 +19,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - podinfo.example.com
+    - podinfo-test.hephy.pro
     secretName: podinfo-tls
