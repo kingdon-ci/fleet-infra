@@ -5,7 +5,7 @@ metadata:
   name: monitoring
   namespace: monitoring
 spec:
-  interval: 30m0s
+  interval: 30s
   ref:
     branch: ossna23
   url: https://github.com/kingdonb/flux2

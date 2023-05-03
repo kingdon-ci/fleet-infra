@@ -5,7 +5,7 @@ metadata:
   name: monitoring-stack
   namespace: monitoring
 spec:
-  interval: 10m0s
+  interval: 30s
   timeout: 2m0s
   healthChecks:
   - kind: Deployment
