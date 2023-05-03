@@ -28,3 +28,11 @@ spec:
         controllerValue: "k8s.io/ingress-nginx-public"
       metrics:
         enabled: true
+        serviceMonitor:
+          enabled: "true"
+          namespace: monitoring
+          namespaceSelector:
+            matchNames:
+              - ingress-nginx
+          additionalLabels:
+            release: kube-prometheus-stack
