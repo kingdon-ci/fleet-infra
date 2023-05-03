@@ -1,0 +1,15 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kepler
+  namespace: kepler
+spec:
+  chart:
+    spec:
+      chart: kepler
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: kepler-helm
+  interval: 10m0s

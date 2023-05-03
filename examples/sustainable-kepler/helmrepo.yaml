@@ -1,0 +1,9 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: kepler-helm
+  namespace: kepler
+spec:
+  interval: 1m0s
+  url: https://sustainable-computing-io.github.io/kepler-helm-chart
