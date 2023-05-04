@@ -1,0 +1,15 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: http-addon
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: keda-add-ons-http
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: keda
+  interval: 30s
