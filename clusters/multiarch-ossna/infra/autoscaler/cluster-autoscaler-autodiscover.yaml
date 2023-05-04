@@ -166,6 +166,7 @@ spec:
             - --cloud-provider=aws
             - --skip-nodes-with-local-storage=false
             - --expander=least-waste
+            - --scale-down-unneeded-time=1m
             - --node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/multiarch-ossna23
             - --balance-similar-node-groups
             - --skip-nodes-with-system-pods=false
