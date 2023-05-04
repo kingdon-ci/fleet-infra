@@ -6,26 +6,26 @@ resources:
 patches:
   # This patch is used to pin Flux to nodes from our chosen architecture
   # Flux supports any of these architectures: arm64, amd64, armv7l
-  # - target:
-  #     kind: Deployment
-  #     labelSelector: app.kubernetes.io/part-of=flux
-  #   patch: |
-  #     apiVersion: apps/v1
-  #     kind: Deployment
-  #     metadata:
-  #       name: all
-  #     spec:
-  #       template:
-  #         spec:
-  #           affinity:
-  #             nodeAffinity:
-  #               requiredDuringSchedulingIgnoredDuringExecution:
-  #                 nodeSelectorTerms:
-  #                   - matchExpressions:
-  #                       - key: kubernetes.io/arch
-  #                         operator: In
-  #                         values:
-  #                           - amd64
+  - target:
+      kind: Deployment
+      labelSelector: app.kubernetes.io/part-of=flux
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: all
+      spec:
+        template:
+          spec:
+            affinity:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                    - matchExpressions:
+                        - key: kubernetes.io/arch
+                          operator: In
+                          values:
+                            - amd64
   # Node affinity/selectors for Flux controllers (set architecture above)
 
   # Set Flux's own bootstrap intervals to 30s, much faster than defaults
