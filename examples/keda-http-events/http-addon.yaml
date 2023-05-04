@@ -14,4 +14,4 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: keda
-  interval: 30s
+  interval: 2m30s

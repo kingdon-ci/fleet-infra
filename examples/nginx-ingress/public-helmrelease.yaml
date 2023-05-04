@@ -4,7 +4,7 @@ metadata:
   name: public-ingress
   namespace: ingress-nginx
 spec:
-  interval: 30s
+  interval: 2m30s
   timeout: 2m0s
   releaseName: ingress-public
   chart:
