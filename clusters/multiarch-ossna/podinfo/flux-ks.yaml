@@ -11,6 +11,9 @@ spec:
   retryInterval: 1m30s
   path: ./examples/podinfo-canary
   prune: true
+  dependsOn:
+    - name: prometheus-kube
+    - name: flagger
   sourceRef:
     kind: GitRepository
     name: flux-system

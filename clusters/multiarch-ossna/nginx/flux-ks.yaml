@@ -10,6 +10,8 @@ spec:
   suspend: false
   retryInterval: 1m30s
   targetNamespace: ingress-nginx
+  dependsOn:
+    - name: prometheus-kube
   path: ./examples/nginx-ingress
   prune: true
   sourceRef:
