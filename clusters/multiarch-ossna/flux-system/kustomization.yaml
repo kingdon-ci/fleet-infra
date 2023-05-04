@@ -25,7 +25,7 @@ patches:
                         - key: kubernetes.io/arch
                           operator: In
                           values:
-                            - amd64
+                            - arm64
   # Node affinity/selectors for Flux controllers (set architecture above)
 
   # Set Flux's own bootstrap intervals to 30s, much faster than defaults
