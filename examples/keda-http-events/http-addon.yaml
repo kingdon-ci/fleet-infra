@@ -5,6 +5,8 @@ metadata:
   name: http-addon
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: keda
   chart:
     spec:
       chart: keda-add-ons-http
