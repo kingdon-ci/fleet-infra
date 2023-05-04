@@ -9,7 +9,7 @@ spec:
   timeout: 1m0s
   suspend: false
   retryInterval: 1m30s
-  targetNamespace: monitoring
+  targetNamespace: keda-test
   path: ./examples/keda-http-events
   prune: true
   sourceRef:
