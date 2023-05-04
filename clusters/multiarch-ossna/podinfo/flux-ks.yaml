@@ -9,8 +9,7 @@ spec:
   timeout: 1m0s
   suspend: false
   retryInterval: 1m30s
-  targetNamespace: default
-  path: ./examples/podinfo-simple
+  path: ./examples/podinfo-canary
   prune: true
   sourceRef:
     kind: GitRepository
