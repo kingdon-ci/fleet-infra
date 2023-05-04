@@ -14,5 +14,5 @@ spec:
         name: flagger
   interval: 1m0s
   values:
-    meshProvider: kubernetes
+    meshProvider: nginx
     metricsServer: http://kube-prometheus-stack-prometheus.monitoring:9090
