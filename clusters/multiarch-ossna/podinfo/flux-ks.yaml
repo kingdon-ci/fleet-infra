@@ -14,6 +14,7 @@ spec:
   dependsOn:
     - name: prometheus-kube
     - name: flagger
+    - name: nginx
   sourceRef:
     kind: GitRepository
     name: flux-system
