@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::457472006214:role/eksctl-multiarch-ossna23-addon-iamserviceacc-Role1-11Z3RTX9A78XV
+    eks.amazonaws.com/role-arn: arn:aws:iam::457472006214:role/eksctl-multiarch-ossna23-addon-iamserviceacc-Role1-GK446CZHH6H
   labels:
     k8s-addon: cluster-autoscaler.addons.k8s.io
     k8s-app: cluster-autoscaler
