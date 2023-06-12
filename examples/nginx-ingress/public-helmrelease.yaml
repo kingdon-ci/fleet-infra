@@ -30,9 +30,7 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: "true"
-          namespace: monitoring
+          namespace: grafana
           namespaceSelector:
             matchNames:
               - ingress-nginx
-          additionalLabels:
-            release: kube-prometheus-stack

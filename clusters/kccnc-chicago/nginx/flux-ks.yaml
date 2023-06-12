@@ -11,7 +11,7 @@ spec:
   retryInterval: 1m30s
   targetNamespace: ingress-nginx
   dependsOn:
-    - name: prometheus-kube
+    - name: grafana-cloud
   path: ./examples/nginx-ingress
   prune: true
   sourceRef:
