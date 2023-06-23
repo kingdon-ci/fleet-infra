@@ -14,7 +14,7 @@ spec:
   wait: true
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: fleet-infra
     namespace: flux-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -34,5 +34,5 @@ spec:
   - name: my-secrets
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: fleet-infra
     namespace: flux-system
