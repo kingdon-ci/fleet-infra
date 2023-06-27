@@ -17,9 +17,8 @@ spec:
     - target:
         kind: Ingress
         name: stats-viewer
-        namespace: stats-dev
       patch: |-
-        - op: add
+        - op: replace
           path: /spec/rules
           value:
             - host: ruby.hephy.pro
