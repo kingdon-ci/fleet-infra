@@ -13,3 +13,22 @@ spec:
   sourceRef:
     kind: OCIRepository
     name: stats-dev
+  patches:
+    - target:
+        kind: Ingress
+        name: stats-viewer
+        namespace: stats-dev
+      patch: |-
+        - op: add
+          path: /spec/rules
+          value:
+            - host: ruby.hephy.pro
+              http:
+                paths:
+                - backend:
+                    service:
+                      name: stats-viewer
+                      port:
+                        number: 80
+                  path: /
+                  pathType: Prefix
