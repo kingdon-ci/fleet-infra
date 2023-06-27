@@ -10,3 +10,5 @@ spec:
   ref:
     tag: latest
   url: oci://ghcr.io/kingdonb/manifests/stats-tracker
+  verify:
+    provider: cosign
