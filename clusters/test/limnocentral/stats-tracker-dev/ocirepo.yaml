@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
   name: stats-dev
-  namespace: flux-system
+  namespace: stats-dev
 spec:
   interval: 1m0s
   provider: generic
