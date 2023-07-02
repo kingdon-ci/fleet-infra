@@ -13,7 +13,7 @@ spec:
       sourceRef:
         kind: GitRepository
         name: bart-spin-git
-      version: '^0.2.0'
+      version: '^0.3.0'
   interval: 10m0s
   timeout: 30s
   releaseName: wasm-blog
