@@ -4,6 +4,7 @@ resources:
 - gotk-components.yaml
 - gotk-sync.yaml
 patches:
+
   # This patch is used to pin Flux to nodes from our chosen architecture
   # Flux supports any of these architectures: arm64, amd64, armv7l
   - target:
@@ -28,14 +29,32 @@ patches:
                             - arm64
   # Node affinity/selectors for Flux controllers (set architecture above)
 
-  # Set Flux's own bootstrap intervals to 30s, much faster than defaults
+  # This patch is from https://fluxcd.io/flux/cheatsheets/bootstrap/#enable-helm-drift-detection
+  # and https://fluxcd.io/flux/cheatsheets/bootstrap/#enable-helm-near-oom-detection
   - patch: |
+      # Enable drift detection feature
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --feature-gates=DetectDrift=true
+      # Enable debug logging for diff output (optional)
       - op: replace
-        path: /spec/interval
-        value: 30s
+        path: /spec/template/spec/containers/0/args/2
+        value: --log-level=debug
+      # Enable OOM watch feature
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --feature-gates=OOMWatch=true
+      # Threshold at which to trigger a graceful shutdown (optional, default 95%)
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --oom-watch-memory-threshold=95
+      # Interval at which to check memory usage (optional, default 500ms)
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --oom-watch-interval=500ms
     target:
-      kind: (Kustomization|GitRepository)
-      name: "flux-system"
+      kind: Deployment
+      name: helm-controller
 
   # Increase the number of concurrent workers: https://fluxcd.io/flux/cheatsheets/bootstrap/#increase-the-number-of-workers
   - patch: |
@@ -71,3 +90,12 @@ patches:
     target:
       kind: Deployment
       name: "(kustomize-controller|helm-controller|source-controller)"
+
+  # This patch is for demos. We haven't set up Receivers yet!
+  - patch: |
+      - op: replace
+        path: /spec/interval
+        value: 2m
+    target:
+      kind: (Kustomization|GitRepository)
+      name: "flux-system"

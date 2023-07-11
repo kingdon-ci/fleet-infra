@@ -4,6 +4,33 @@ resources:
 - gotk-components.yaml
 - gotk-sync.yaml
 patches:
+
+  # This patch is used to pin Flux to nodes from our chosen architecture
+  # Flux supports any of these architectures: arm64, amd64, armv7l
+  - target:
+      kind: Deployment
+      labelSelector: app.kubernetes.io/part-of=flux
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: all
+      spec:
+        template:
+          spec:
+            affinity:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                    - matchExpressions:
+                        - key: kubernetes.io/arch
+                          operator: In
+                          values:
+                            - amd64
+  # Node affinity/selectors for Flux controllers (set architecture above)
+
+  # This patch is from https://fluxcd.io/flux/cheatsheets/bootstrap/#enable-helm-drift-detection
+  # and https://fluxcd.io/flux/cheatsheets/bootstrap/#enable-helm-near-oom-detection
   - patch: |
       # Enable drift detection feature
       - op: add
@@ -28,6 +55,8 @@ patches:
     target:
       kind: Deployment
       name: helm-controller
+
+  # Increase the number of concurrent workers: https://fluxcd.io/flux/cheatsheets/bootstrap/#increase-the-number-of-workers
   - patch: |
       - op: add
         path: /spec/template/spec/containers/0/args/-
@@ -61,13 +90,12 @@ patches:
     target:
       kind: Deployment
       name: "(kustomize-controller|helm-controller|source-controller)"
+
+  # This patch is for demos. We haven't set up Receivers yet!
   - patch: |
-      apiVersion: kustomize.toolkit.fluxcd.io/v1
-      kind: Kustomization
-      metadata:
-        name: flux-system
-      spec:
-        interval: 2m
+      - op: replace
+        path: /spec/interval
+        value: 2m
     target:
-      kind: Kustomization
+      kind: (Kustomization|GitRepository)
       name: "flux-system"
