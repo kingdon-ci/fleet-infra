@@ -95,7 +95,14 @@ patches:
   - patch: |
       - op: replace
         path: /spec/interval
-        value: 2m
+        value: 10m
     target:
-      kind: (Kustomization|GitRepository)
+      kind: Kustomization
+      name: "flux-system"
+  - patch: |
+      - op: replace
+        path: /spec/interval
+        value: 1m
+    target:
+      kind: GitRepository
       name: "flux-system"
