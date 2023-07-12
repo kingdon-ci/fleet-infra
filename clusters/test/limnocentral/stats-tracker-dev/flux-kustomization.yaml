@@ -15,6 +15,13 @@ spec:
     name: stats-dev
   patches:
     - target:
+        kind: CronJob
+        name: stats-tracker-ghcr
+      patch: |-
+        - op: add
+          path: /spec/suspend
+          value: true
+    - target:
         kind: Ingress
         name: stats-viewer
       patch: |-
