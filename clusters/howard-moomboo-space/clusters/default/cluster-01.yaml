@@ -6,10 +6,10 @@ metadata:
     templates.weave.works/template-namespace: default
     weave.works/capi: bootstrap
   name: cluster-01
-  namespace: test
+  namespace: default
   annotations:
-    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/kingdon-ci/fleet-infra\",\"head_branch\":\"wge-create-branch-3s05m7\",\"base_branch\":\"main\",\"title\":\"Create resource cluster-01\",\"description\":\"This PR creates a cluster-template-development-plus-kubelogin instance\",\"template_name\":\"cluster-template-development-plus-kubelogin\",\"parameter_values\":{\"CLUSTER_NAME\":\"cluster-01\",\"K3S_VERSION\":\"v1.25.6-k3s1\",\"NAMESPACE\":\"test\"},\"commit_message\":\"Create cluster-template-development-plus-kubelogin instance\",\"credentials\":{},\"template_namespace\":\"vcluster\",\"template_kind\":\"GitOpsTemplate\"}"
-    templates.weave.works/created-files: "{\"files\":[\"clusters/howard-moomboo-space/clusters/test/cluster-01.yaml\"]}"
+    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/kingdon-ci/fleet-infra\",\"head_branch\":\"wge-create-branch-3s05m7\",\"base_branch\":\"main\",\"title\":\"Create resource cluster-01\",\"description\":\"This PR creates a cluster-template-development-plus-kubelogin instance\",\"template_name\":\"cluster-template-development-plus-kubelogin\",\"parameter_values\":{\"CLUSTER_NAME\":\"cluster-01\",\"K3S_VERSION\":\"v1.25.6-k3s1\",\"NAMESPACE\":\"default\"},\"commit_message\":\"Create cluster-template-development-plus-kubelogin instance\",\"credentials\":{},\"template_namespace\":\"vcluster\",\"template_kind\":\"GitOpsTemplate\"}"
+    templates.weave.works/created-files: "{\"files\":[\"clusters/howard-moomboo-space/clusters/default/cluster-01.yaml\"]}"
 spec:
   capiClusterRef:
     name: cluster-01
@@ -22,7 +22,7 @@ metadata:
     templates.weave.works/template-name: cluster-template-development-plus-kubelogin
     templates.weave.works/template-namespace: default
   name: cluster-01
-  namespace: test
+  namespace: default
 spec:
   controlPlaneRef:
     apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
@@ -44,7 +44,7 @@ metadata:
     templates.weave.works/template-name: cluster-template-development-plus-kubelogin
     templates.weave.works/template-namespace: default
   name: cluster-01
-  namespace: test
+  namespace: default
 spec:
   controlPlaneEndpoint:
     host: cluster-01.turkey.local
