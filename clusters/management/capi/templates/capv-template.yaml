@@ -27,6 +27,8 @@ spec:
         - "v1.24.10-k3s1" # {"$imagepolicy": "flux-system:k3s-1-24:tag"}
         - "v1.25.6-k3s1" # {"$imagepolicy": "flux-system:k3s-1-25:tag"}
         - "v1.26.1-k3s1" # {"$imagepolicy": "flux-system:k3s-1-26:tag"}
+        - "v1.27.0-k3s1" # {"$imagepolicy": "flux-system:k3s-1-27:tag"}
+        - "v1.28.0-k3s1" # {"$imagepolicy": "flux-system:k3s-1-28:tag"}
   resourcetemplates:
     - content:
         - apiVersion: gitops.weave.works/v1alpha1
