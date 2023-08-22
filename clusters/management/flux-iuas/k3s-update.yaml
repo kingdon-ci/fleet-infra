@@ -17,7 +17,7 @@ spec:
   interval: 1m0s
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: fleet-infra
   update:
     path: ./clusters/management/capi
     strategy: Setters
