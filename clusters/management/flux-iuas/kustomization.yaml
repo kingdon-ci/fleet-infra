@@ -5,5 +5,7 @@ resources:
 - k3s-1-24-policy.yaml
 - k3s-1-25-policy.yaml
 - k3s-1-26-policy.yaml
+- k3s-1-27-policy.yaml
+- k3s-1-28-policy.yaml
 - k3s-imagerepo.yaml
 #- k3s-update.yaml
