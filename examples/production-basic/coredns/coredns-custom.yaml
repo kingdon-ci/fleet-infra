@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-custom
+  namespace: kube-system
+data:
+  # adapted from reading: https://learn.microsoft.com/en-us/azure/aks/coredns-custom
+  # and parts borrowed from (my default coredns config, marked up just a little):
+  # https://github.com/kingdonb/bootstrap-repo/blob/main/clusters/howard-moomboo-space/kube-system/coredns-configmap.yaml
+  test.server: |
+    demo.test:1053 {
+    log
+    errors
+    rewrite stop {
+      name regex podinfo\.demo\.test ingress-nginx-controller.ingress-nginx.svc.cluster.local
+      answer name ingress-nginx-controller\.ingress-nginx\.svc\.cluster\.local podinfo.demo.test
+      # name regex (.*)\.demo\.test {1}.default.svc.cluster.local
+      # answer name (.*)\.default\.svc\.cluster\.local {1}.<domain to be rewritten>.com
+    }
+    kubernetes cluster.local in-addr.arpa ip6.arpa {
+        pods insecure
+        fallthrough in-addr.arpa ip6.arpa
+        ttl 30
+    }
+    # forward . /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10, but that server must be able to resolve the rewritten domain name
+    }
+    # This configuration is designed to be used alongside a default `coredns` configmap
