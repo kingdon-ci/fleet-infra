@@ -4,3 +4,4 @@ resources:
 - capi-default-bootstrap-config.yaml
 - capi-gitops-cluster-bootstrap-config.yaml
 - capi-vcluster-bootstrap-config.yaml
+- capi-vcluster-howard-moomboo-stage-bootstrap-config.yaml
