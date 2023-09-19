@@ -2,7 +2,7 @@ apiVersion: capi.weave.works/v1alpha1
 kind: ClusterBootstrapConfig
 metadata:
   name: capi-gitops
-  namespace: test
+  namespace: vcluster-howard-moomboo-stage
 spec:
   clusterSelector:
     matchLabels:
