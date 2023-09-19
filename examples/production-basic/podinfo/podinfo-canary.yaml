@@ -17,8 +17,8 @@ spec:
     name: podinfo
   # Autoscaler reference (optional)
   autoscalerRef:
-    apiVersion: keda.sh/v1alpha1
-    kind: ScaledObject
+    apiVersion: autoscaling/v2
+    kind: HorizontalPodAutoscaler
     name: podinfo
   # the maximum time in seconds for the canary deployment
   # to make progress before it is rollback (default 600s)
