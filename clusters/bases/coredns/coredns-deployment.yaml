@@ -6,10 +6,17 @@ metadata:
   name: coredns
   namespace: kube-system
 spec:
+  selector:
+    matchLabels:
+      k8s-app: kube-dns
   template:
+    metadata:
+      labels:
+        k8s-app: kube-dns
     spec:
       containers:
       - name: coredns
+        image: coredns/coredns
         securityContext:
           allowPrivilegeEscalation: true
           capabilities:
