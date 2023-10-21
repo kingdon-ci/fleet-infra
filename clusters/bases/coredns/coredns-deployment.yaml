@@ -17,6 +17,7 @@ spec:
       containers:
       - name: coredns
         image: coredns/coredns
+        imagePullPolicy: Always
         securityContext:
           allowPrivilegeEscalation: true
           capabilities:
