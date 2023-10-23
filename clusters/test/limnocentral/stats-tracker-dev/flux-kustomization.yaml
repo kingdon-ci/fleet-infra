@@ -8,7 +8,7 @@ spec:
   interval: 10m0s
   timeout: 1m0s
   retryInterval: 1m30s
-  path: ./overlays/dev
+  path: ./overlays/production
   prune: true
   sourceRef:
     kind: OCIRepository

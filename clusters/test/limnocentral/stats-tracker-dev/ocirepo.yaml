@@ -8,7 +8,7 @@ spec:
   interval: 1m0s
   provider: generic
   ref:
-    tag: latest
+    semver: 0.1.x
   url: oci://ghcr.io/kingdonb/manifests/stats-tracker
   verify:
     provider: cosign
