@@ -10,7 +10,7 @@ spec:
   retryInterval: 1m30s
   path: ./overlays/production
   prune: true
-  namespace: stats-dev
+  targetNamespace: stats-dev
   sourceRef:
     kind: OCIRepository
     name: stats-dev
