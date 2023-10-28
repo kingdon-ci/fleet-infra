@@ -1,41 +1,41 @@
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: stats-tracker-dev
-  namespace: stats-dev
-spec:
-  interval: 10m0s
-  timeout: 1m0s
-  retryInterval: 1m30s
-  path: ./overlays/production
-  prune: true
-  targetNamespace: stats-dev
-  sourceRef:
-    kind: OCIRepository
-    name: stats-dev
-  patches:
-    - target:
-        kind: CronJob
-        name: stats-tracker-ghcr
-      patch: |-
-        - op: add
-          path: /spec/suspend
-          value: true
-    - target:
-        kind: Ingress
-        name: stats-viewer
-      patch: |-
-        - op: replace
-          path: /spec/rules
-          value:
-            - host: ruby.hephy.pro
-              http:
-                paths:
-                - backend:
-                    service:
-                      name: stats-viewer
-                      port:
-                        number: 80
-                  path: /
-                  pathType: Prefix
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+# kind: Kustomization
+# metadata:
+#   name: stats-tracker-dev
+#   namespace: stats-dev
+# spec:
+#   interval: 10m0s
+#   timeout: 1m0s
+#   retryInterval: 1m30s
+#   path: ./overlays/production
+#   prune: true
+#   targetNamespace: stats-dev
+#   sourceRef:
+#     kind: OCIRepository
+#     name: stats-dev
+#   patches:
+#     - target:
+#         kind: CronJob
+#         name: stats-tracker-ghcr
+#       patch: |-
+#         - op: add
+#           path: /spec/suspend
+#           value: true
+#     - target:
+#         kind: Ingress
+#         name: stats-viewer
+#       patch: |-
+#         - op: replace
+#           path: /spec/rules
+#           value:
+#             - host: ruby.hephy.pro
+#               http:
+#                 paths:
+#                 - backend:
+#                     service:
+#                       name: stats-viewer
+#                       port:
+#                         number: 80
+#                   path: /
+#                   pathType: Prefix
