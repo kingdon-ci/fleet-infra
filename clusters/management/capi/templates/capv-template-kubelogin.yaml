@@ -23,7 +23,7 @@ spec:
       options:
         - "v1.23.17-k3s1" # {"$imagepolicy": "flux-system:k3s-1-23:tag"}
         - "v1.24.17-k3s1" # {"$imagepolicy": "flux-system:k3s-1-24:tag"}
-        - "v1.25.14-k3s1" # {"$imagepolicy": "flux-system:k3s-1-25:tag"}
+        - "v1.25.15-k3s1" # {"$imagepolicy": "flux-system:k3s-1-25:tag"}
         - "v1.26.10-k3s1" # {"$imagepolicy": "flux-system:k3s-1-26:tag"}
         - "v1.27.7-k3s1" # {"$imagepolicy": "flux-system:k3s-1-27:tag"}
         - "v1.28.3-k3s1" # {"$imagepolicy": "flux-system:k3s-1-28:tag"}
