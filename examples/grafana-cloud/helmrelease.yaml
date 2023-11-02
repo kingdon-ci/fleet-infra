@@ -16,7 +16,7 @@ spec:
   #   createNamespace: true
   interval: 1m0s
     # HelmRelease is suspended to get metrics use under control
-  suspend: true
+  suspend: false
   releaseName: grafana-agent-operator
   targetNamespace: grafana
   storageNamespace: grafana
