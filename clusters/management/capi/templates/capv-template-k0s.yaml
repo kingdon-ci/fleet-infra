@@ -68,6 +68,8 @@ spec:
               port: 443
             kubernetesVersion: "{{ $minorVersion }}"
             helmRelease:
+              chart:
+                name: vcluster-k0s
               values: |-
                 vcluster:
                   image: "k0sproject/k0s:{{ .params.K0S_VERSION }}"
