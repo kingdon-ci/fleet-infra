@@ -56,9 +56,9 @@ spec:
       vcluster:
         image: "k0sproject/k0s:v1.28.3-k0s.0"
         extraArgs:
-        - --kubelet-extra-arg --oidc-issuer-url=https://dex.howard.moomboo.space
-        - --kubelet-extra-arg --oidc-client-id=wg-kubelogin
-        - --kubelet-extra-arg --oidc-groups-claim=groups
+        - --kubelet-extra-args --oidc-issuer-url=https://dex.howard.moomboo.space
+        - --kubelet-extra-args --oidc-client-id=wg-kubelogin
+        - --kubelet-extra-args --oidc-groups-claim=groups
       syncer:
         extraArgs:
         - "--tls-san=cluster-03.turkey.local"
