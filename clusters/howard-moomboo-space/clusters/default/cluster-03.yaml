@@ -50,6 +50,8 @@ spec:
     host: cluster-03.turkey.local
     port: 443
   helmRelease:
+    chart:
+      name: vcluster-k0s
     values: |-
       vcluster:
         image: "k0sproject/k0s:v1.28.3-k0s.0"
