@@ -1,0 +1,14 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: k0s-1-27
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: k0s
+  filterTags:
+    pattern: '^v1\.27\.[0-9]+-k0s\.[0-9]+$'
+  policy:
+    semver:
+      range: 1.27.x-0

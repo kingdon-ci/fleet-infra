@@ -1,0 +1,9 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: k0s
+  namespace: flux-system
+spec:
+  image: k0sproject/k0s
+  interval: 1h0m0s

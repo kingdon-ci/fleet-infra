@@ -3,3 +3,5 @@ kind: Kustomization
 resources:
 - capv-template.yaml
 - capv-template-kubelogin.yaml
+- capv-template-k0s.yaml
+- capv-template-k0s-kubelogin.yaml

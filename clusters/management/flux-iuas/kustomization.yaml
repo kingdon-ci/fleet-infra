@@ -7,7 +7,12 @@ resources:
 - k3s-1-26-policy.yaml
 - k3s-1-27-policy.yaml
 - k3s-1-28-policy.yaml
+- k0s-1-25-policy.yaml
+- k0s-1-26-policy.yaml
+- k0s-1-27-policy.yaml
+- k0s-1-28-policy.yaml
 - k3s-imagerepo.yaml
+- k0s-imagerepo.yaml
 - flux-update.yaml
 - flux-2-1-policy.yaml
 - flux-imagerepo.yaml
