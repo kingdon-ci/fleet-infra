@@ -23,10 +23,10 @@ spec:
     - name: K0S_VERSION
       description: Kubernetes version to use for the cluster
       options:
-        - "v1.25.15-k0s.0" # {"$imagepolicy": "flux-system:k0s-1-25:tag"}
+        - "v1.25.16-k0s.0" # {"$imagepolicy": "flux-system:k0s-1-25:tag"}
         - "v1.26.10-k0s.0" # {"$imagepolicy": "flux-system:k0s-1-26:tag"}
         - "v1.27.8-k0s.0" # {"$imagepolicy": "flux-system:k0s-1-27:tag"}
-        - "v1.28.3-k0s.0" # {"$imagepolicy": "flux-system:k0s-1-28:tag"}
+        - "v1.28.4-k0s.0" # {"$imagepolicy": "flux-system:k0s-1-28:tag"}
   resourcetemplates:
     - content:
         - apiVersion: gitops.weave.works/v1alpha1
