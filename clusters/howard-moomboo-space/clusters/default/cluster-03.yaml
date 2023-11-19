@@ -7,9 +7,6 @@ metadata:
     weave.works/capi: bootstrap
   name: cluster-03
   namespace: default
-  annotations:
-    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/kingdon-ci/fleet-infra\",\"head_branch\":\"wge-create-branch-wpihf\",\"base_branch\":\"main\",\"title\":\"Create resource cluster-03\",\"description\":\"This PR creates a cluster-template-k0s-plus-kubelogin instance\",\"template_name\":\"cluster-template-k0s-plus-kubelogin\",\"parameter_values\":{\"CLUSTER_NAME\":\"cluster-03\",\"K0S_VERSION\":\"v1.28.3-k0s.0\",\"NAMESPACE\":\"default\"},\"commit_message\":\"Create cluster-template-k0s-plus-kubelogin instance\",\"credentials\":{},\"template_namespace\":\"vcluster\",\"template_kind\":\"GitOpsTemplate\"}"
-    templates.weave.works/created-files: "{\"files\":[\"clusters/howard-moomboo-space/clusters/default/cluster-03.yaml\"]}"
 spec:
   capiClusterRef:
     name: cluster-03
@@ -55,10 +52,6 @@ spec:
     values: |-
       vcluster:
         image: "k0sproject/k0s:v1.28.3-k0s.0"
-        extraArgs:
-        - --oidc-issuer-url=https://dex.howard.moomboo.space
-        - --oidc-client-id=wg-kubelogin
-        - --oidc-groups-claim=groups
       syncer:
         extraArgs:
         - "--tls-san=cluster-03.turkey.local"
