@@ -15,4 +15,5 @@ resources:
 - k0s-imagerepo.yaml
 - flux-update.yaml
 - flux-2-1-policy.yaml
+- flux-2-2-policy.yaml
 - flux-imagerepo.yaml
