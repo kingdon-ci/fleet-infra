@@ -18,7 +18,15 @@ spec:
             - name: kubeconfig
               mountPath: "/etc/gitops"
               readOnly: true
-          args: ["bootstrap", "github", "--kubeconfig=/etc/gitops/value", "--owner=kingdon-ci", "--repository=fleet-infra", "--path=./clusters/{{ .ObjectMeta.Namespace }}/{{ .ObjectMeta.Name }}"]
+          args: [
+              "bootstrap",
+              "github",
+              "--kubeconfig=/etc/gitops/value",
+              "--owner=kingdon-ci",
+              "--repository=fleet-infra",
+              "--path=./clusters/{{ .ObjectMeta.Namespace }}/{{ .ObjectMeta.Name }}",
+            ]
+
           env:
             - name: GITHUB_TOKEN
               valueFrom:
