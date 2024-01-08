@@ -40,8 +40,8 @@ kind: VCluster
 metadata:
   labels:
     cluster.x-k8s.io/cluster-name: limnocentral
-    k3s_version: 1.27.4-k3s1
-    minor_k8s_version: "1.27"
+    k3s_version: 1.28.5-k3s1
+    minor_k8s_version: "1.28"
     templates.weave.works/template-name: cluster-template-development-plus-kubelogin
     templates.weave.works/template-namespace: default
   name: limnocentral
@@ -53,7 +53,7 @@ spec:
   helmRelease:
     values: |-
       vcluster:
-        image: "rancher/k3s:v1.27.4-k3s1"
+        image: "rancher/k3s:v1.28.5-k3s1"
         extraArgs:
         - --kube-apiserver-arg --oidc-issuer-url=https://dex.howard.moomboo.space
         - --kube-apiserver-arg --oidc-client-id=wg-kubelogin
@@ -72,4 +72,4 @@ spec:
           enabled: true
         ingresses:
           enabled: true
-  kubernetesVersion: "1.27"
+  kubernetesVersion: "1.28"
