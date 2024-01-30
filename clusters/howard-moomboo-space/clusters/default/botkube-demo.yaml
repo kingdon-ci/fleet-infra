@@ -4,12 +4,8 @@ metadata:
   labels:
     templates.weave.works/template-name: cluster-template-development-plus-kubelogin
     templates.weave.works/template-namespace: default
-    weave.works/capi: bootstrap
   name: botkube-demo
   namespace: default
-  annotations:
-    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/kingdon-ci/fleet-infra\",\"head_branch\":\"wge-create-branch-7zdvt9\",\"base_branch\":\"main\",\"title\":\"Create resource botkube-demo\",\"description\":\"This PR creates a cluster-template-development-plus-kubelogin instance\",\"name\":\"cluster-template-development-plus-kubelogin\",\"parameter_values\":{\"CLUSTER_NAME\":\"botkube-demo\",\"K3S_VERSION\":\"v1.28.4-k3s1\",\"NAMESPACE\":\"default\"},\"commit_message\":\"Create cluster-template-development-plus-kubelogin instance\",\"credentials\":{},\"namespace\":\"vcluster\",\"template_kind\":\"GitOpsTemplate\"}"
-    templates.weave.works/created-files: "{\"files\":[\"clusters/howard-moomboo-space/clusters/default/botkube-demo.yaml\"]}"
 spec:
   capiClusterRef:
     name: botkube-demo
