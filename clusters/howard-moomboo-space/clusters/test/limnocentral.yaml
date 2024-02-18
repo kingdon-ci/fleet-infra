@@ -1,19 +1,19 @@
-apiVersion: gitops.weave.works/v1alpha1
-kind: GitopsCluster
-metadata:
-  annotations:
-    templates.weave.works/create-request: '{"repository_url":"https://github.com/kingdon-ci/fleet-infra","head_branch":"edit-limnocentral-branch-dy1w5d","title":"Edits
-      limnocentral","description":"This PR edits the resource limnocentral","template_name":"cluster-template-development-plus-kubelogin","parameter_values":{"CLUSTER_NAME":"limnocentral","K3S_VERSION":"v1.24.10-k3s1","KUBERNETES_VERSION":"1.23","NAMESPACE":"test"},"commit_message":"Edits
-      limnocentral","credentials":{},"template_namespace":"vcluster","template_kind":"GitOpsTemplate"}'
-  labels:
-    templates.weave.works/template-name: cluster-template-development-plus-kubelogin
-    templates.weave.works/template-namespace: default
-    weave.works/capi: bootstrap
-  name: limnocentral
-  namespace: test
-spec:
-  capiClusterRef:
-    name: limnocentral
+# apiVersion: gitops.weave.works/v1alpha1
+# kind: GitopsCluster
+# metadata:
+#   annotations:
+#     templates.weave.works/create-request: '{"repository_url":"https://github.com/kingdon-ci/fleet-infra","head_branch":"edit-limnocentral-branch-dy1w5d","title":"Edits
+#       limnocentral","description":"This PR edits the resource limnocentral","template_name":"cluster-template-development-plus-kubelogin","parameter_values":{"CLUSTER_NAME":"limnocentral","K3S_VERSION":"v1.24.10-k3s1","KUBERNETES_VERSION":"1.23","NAMESPACE":"test"},"commit_message":"Edits
+#       limnocentral","credentials":{},"template_namespace":"vcluster","template_kind":"GitOpsTemplate"}'
+#   labels:
+#     templates.weave.works/template-name: cluster-template-development-plus-kubelogin
+#     templates.weave.works/template-namespace: default
+#     weave.works/capi: bootstrap
+#   name: limnocentral
+#   namespace: test
+# spec:
+#   capiClusterRef:
+#     name: limnocentral
 
 ---
 apiVersion: cluster.x-k8s.io/v1beta1

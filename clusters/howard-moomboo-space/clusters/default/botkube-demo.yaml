@@ -1,15 +1,15 @@
-apiVersion: gitops.weave.works/v1alpha1
-kind: GitopsCluster
-metadata:
-  labels:
-    templates.weave.works/template-name: cluster-template-development-plus-kubelogin
-    templates.weave.works/template-namespace: default
-  name: botkube-demo
-  namespace: default
-spec:
-  capiClusterRef:
-    name: botkube-demo
-
+# apiVersion: gitops.weave.works/v1alpha1
+# kind: GitopsCluster
+# metadata:
+#   labels:
+#     templates.weave.works/template-name: cluster-template-development-plus-kubelogin
+#     templates.weave.works/template-namespace: default
+#   name: botkube-demo
+#   namespace: default
+# spec:
+#   capiClusterRef:
+#     name: botkube-demo
+# 
 ---
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
