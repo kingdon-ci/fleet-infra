@@ -50,6 +50,9 @@ spec:
     host: cluster-01.turkey.local
     port: 443
   helmRelease:
+    # chart:
+    #   name: vcluster
+    #   version: 0.19.0
     values: |-
       vcluster:
         image: "rancher/k3s:v1.28.5-k3s1"
