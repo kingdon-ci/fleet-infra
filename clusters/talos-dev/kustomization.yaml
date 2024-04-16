@@ -1,3 +1,4 @@
 resources:
   - capacitor.yaml
+  - local-path-provisioner/
 # namespace: flux-system
