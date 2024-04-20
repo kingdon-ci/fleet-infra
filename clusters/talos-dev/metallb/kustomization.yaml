@@ -3,4 +3,4 @@ namespace: metallb-system
 resources:
   - metallb-native.yaml
   - resources.yaml
-  # - receiver-lb.yaml
+  - receiver-lb.yaml
