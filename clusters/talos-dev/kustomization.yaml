@@ -2,4 +2,5 @@ resources:
   - capacitor.yaml
   - local-path-provisioner/
   - metallb
+  - networkpolicy
 # namespace: flux-system
