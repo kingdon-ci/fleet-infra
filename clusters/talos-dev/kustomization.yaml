@@ -3,4 +3,5 @@ resources:
   - local-path-provisioner/
   - metallb
   # - networkpolicy
+  - receiver
 # namespace: flux-system
