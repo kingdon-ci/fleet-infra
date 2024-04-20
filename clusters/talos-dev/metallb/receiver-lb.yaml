@@ -5,6 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   type: LoadBalancer
+  loadBalancerIP: 10.17.12.252
   selector:
     app: notification-controller
   ports:
