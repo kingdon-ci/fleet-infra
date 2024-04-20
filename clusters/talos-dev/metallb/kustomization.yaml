@@ -1,4 +1,4 @@
-namespace: metallb-system
+# namespace: metallb-system
 
 resources:
   - metallb-native.yaml
