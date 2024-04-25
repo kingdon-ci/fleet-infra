@@ -3,4 +3,5 @@ resources:
   - local-path-provisioner/
   - metallb
   - receiver
+  - spin-operator
 # namespace: flux-system
