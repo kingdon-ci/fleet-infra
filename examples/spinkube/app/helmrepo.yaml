@@ -1,0 +1,9 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: spinkube
+spec:
+  interval: 10m0s
+  type: oci
+  url: oci://ghcr.io/spinkube/charts
