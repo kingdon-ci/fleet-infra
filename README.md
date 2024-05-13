@@ -1,6 +1,8 @@
 # fleet-infra
 
-This is an example repository for multi-cluster Flux.
+This is an example repository for multi-cluster Flux. Not guaranteed to be good
+example, but it is still in use as of May 13 2024 and if you see commits, it
+probably continues to be in use. No telling, YMMV, herein be scary dragons.
 
 Actual clusters are hosted from here, and it is tested regularly through use.
 
