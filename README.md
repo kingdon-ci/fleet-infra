@@ -10,7 +10,7 @@ Actual clusters are hosted from here, and it is tested regularly through use.
 
 These clusters use Dex for GitHub OIDC, which is configured based on:
 
-* [Weave GitOps Guides: Setting Up Dex](https://docs.gitops.weave.works/docs/guides/setting-up-dex/#deploy-dex)
+* [Weave GitOps Guides: Setting Up Dex](https://gitops.weave.works/docs/0.29.0/guides/setting-up-dex#deploy-dex)
 
 There should be no secrets published here, except for ones that can be public.
 
