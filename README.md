@@ -23,9 +23,9 @@ to gain direct access with `kubectl`.
 
 * [Howto (howard.moomboo.space)](https://howto.howard.moomboo.space)
 
-This is not a production system, but it may host some production services. 🤞
+This is not a production system, but webhooks may be treated like production.
 
-They are provided gratis by an owner, come with no warranty or guarantee of
+Services are provided gratis by an owner, come with no warranty or guarantee of
 continued or reliable service, and may be turned off sometimes, periodically,
 on an unscheduled basis, or have irregular service. Be ye here fore- warned!
 
