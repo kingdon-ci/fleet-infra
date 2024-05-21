@@ -17,6 +17,7 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
+  timeout: 30s
   interval: 1m0s
   path: ./clusters/howard-moomboo-new
   prune: true
