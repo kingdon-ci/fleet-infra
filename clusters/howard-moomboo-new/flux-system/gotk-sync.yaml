@@ -9,7 +9,9 @@ spec:
   interval: 1m0s
   ref:
     branch: main
-  url: https://github.com/kingdon-ci/fleet-infra
+  secretRef:
+    name: flux-system
+  url: ssh://git@github.com/kingdon-ci/fleet-infra
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -17,8 +19,7 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  timeout: 30s
-  interval: 1m0s
+  interval: 10m0s
   path: ./clusters/howard-moomboo-new
   prune: true
   sourceRef:
