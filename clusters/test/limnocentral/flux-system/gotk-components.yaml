@@ -9,3 +9,9 @@ spec:
     registry: "ghcr.io/fluxcd"
   cluster:
     type: kubernetes
+  sync:
+    kind: GitRepository
+    url: "https://github.com/kingdon-ci/fleet-infra.git"
+    ref: "refs/heads/main"
+    path: "clusters/test/limnocentral"
+    pullSecret: "flux-system"
