@@ -19,7 +19,7 @@ spec:
     domain: "cluster.local"
   sync:
     kind: GitRepository
-    url: "ssh://git@github.com/kingdon-ci/fleet-infra.git"
+    url: "https://github.com/kingdon-ci/fleet-infra"
     ref: "refs/heads/main"
     path: "clusters/test/limnocentral"
     pullSecret: "flux-system"
