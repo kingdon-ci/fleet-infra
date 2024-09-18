@@ -38,3 +38,5 @@ spec:
     uninstall:
       hook: "pre-delete"
       # hook: "post-delete"
+  uninstall:
+    disableHooks: true
