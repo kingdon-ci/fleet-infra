@@ -1,0 +1,40 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: podinfo
+  namespace: default
+spec:
+  interval: 5m0s
+  url: https://github.com/darkowlzz/podinfo
+  ref:
+    branch: delete-hook
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmChart
+metadata:
+  name: podinfo
+  namespace: default
+spec:
+  interval: 5m
+  chart: ./charts/podinfo
+  reconcileStrategy: Revision
+  sourceRef:
+    kind: GitRepository
+    name: podinfo
+  version: '*'
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: podinfo
+  namespace: default
+spec:
+  interval: 10m
+  chartRef:
+    kind: HelmChart
+    name: podinfo
+    namespace: default
+  values:
+    uninstall:
+      # hook: "pre-delete"
+      hook: "post-delete"
