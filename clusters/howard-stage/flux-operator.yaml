@@ -25,6 +25,16 @@ spec:
   kustomize:
     patches:
       - patch: |
+          spec:
+            template:
+              spec:
+                containers:
+                - name: manager
+                  image: docker.io/kingdonb/helm-controller:dont-ignore-helm-errors
+        target:
+          kind: Deployment
+          name: helm-controller
+      - patch: |
           apiVersion: apps/v1
           kind: Deployment
           metadata:
