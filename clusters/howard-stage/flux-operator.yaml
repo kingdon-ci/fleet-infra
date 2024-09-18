@@ -25,6 +25,10 @@ spec:
   kustomize:
     patches:
       - patch: |
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: helm-controller
           spec:
             template:
               spec:
@@ -34,6 +38,7 @@ spec:
         target:
           kind: Deployment
           name: helm-controller
+          namespace: flux-system
       - patch: |
           apiVersion: apps/v1
           kind: Deployment
