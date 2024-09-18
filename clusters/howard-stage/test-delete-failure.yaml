@@ -36,5 +36,5 @@ spec:
     namespace: default
   values:
     uninstall:
-      # hook: "pre-delete"
-      hook: "post-delete"
+      hook: "pre-delete"
+      # hook: "post-delete"
