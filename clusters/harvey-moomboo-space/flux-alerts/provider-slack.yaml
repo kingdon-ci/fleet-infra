@@ -6,6 +6,6 @@ metadata:
 spec:
   type: slack
   channel: general
-  address: https://hooks.slack.com/services/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
+  address: https://slack.com/api/chat.postMessage
   secretRef:
     name: slack-bot-token
