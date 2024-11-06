@@ -4,11 +4,11 @@ metadata:
   name: harvey-alerts
   namespace: cozy-fluxcd
 spec:
-  summary: "flux events"
-  eventMetadata:
-    env: "test"
-    cluster: "harvey"
-    region: "sbn-indiana-1"
+  summary: "flux events (harvey)"
+  # eventMetadata:
+  #   env: "test"
+  #   cluster: "harvey"
+  #   region: "sbn-indiana-1"
   providerRef:
     name: slack-bot
   eventSeverity: info
