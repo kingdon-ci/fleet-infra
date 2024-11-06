@@ -5,7 +5,7 @@ metadata:
   namespace: cozy-fluxcd
 spec:
   type: slack
-  channel: general
-  address: https://slack.com/api/chat.postMessage
+  channel: gitops
+  # address: https://slack.com/api/chat.postMessage
   secretRef:
     name: slack-bot-token
