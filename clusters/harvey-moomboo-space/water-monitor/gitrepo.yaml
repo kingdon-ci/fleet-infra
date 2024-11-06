@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
   name: water-dev
-  namespace: default
+  namespace: cozy-fluxcd
 spec:
   interval: 1m0s
   ref:
