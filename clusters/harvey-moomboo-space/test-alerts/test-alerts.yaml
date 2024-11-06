@@ -22,5 +22,5 @@ spec:
     - kind: Kustomization
       name: water-monitor-dev
       namespace: cozy-fluxcd
-  inclusionList:
-  - ".*Reconciliation finished.*"
+#   inclusionList:
+#   - ".*Reconciliation finished.*"
