@@ -1,0 +1,13 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: water-dev
+  namespace: default
+spec:
+  interval: 1m0s
+  ref:
+    branch: main
+  secretRef:
+    name: water-monitor-ssh
+  url: ssh://git@github.com/kingdonb/water-monitor.git
