@@ -14,7 +14,7 @@ metadata:
   name: test-alert
   namespace: test-generic
 spec:
-  summary: "kustomization completed"
+  summary: "test-alert fired"
   providerRef:
     name: test-webhook
   eventSeverity: info
