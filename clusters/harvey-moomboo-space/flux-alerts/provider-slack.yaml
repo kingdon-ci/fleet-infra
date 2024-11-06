@@ -2,7 +2,7 @@ apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Provider
 metadata:
   name: slack-bot
-  namespace: flagger-system
+  namespace: cozy-fluxcd
 spec:
   type: slack
   channel: general
