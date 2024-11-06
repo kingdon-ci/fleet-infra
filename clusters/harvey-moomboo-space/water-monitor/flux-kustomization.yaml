@@ -8,6 +8,7 @@ spec:
   interval: 10m0s
   path: ./water-dev
   prune: true
+  wait: true
   sourceRef:
     kind: GitRepository
     name: water-dev
