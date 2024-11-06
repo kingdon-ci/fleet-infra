@@ -1,0 +1,50 @@
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: harvey-alerts
+  namespace: cozy-fluxcd
+spec:
+  summary: "flux events"
+  eventMetadata:
+    env: "test"
+    cluster: "harvey"
+    region: "sbn-indiana-1"
+  providerRef:
+    name: slack-bot
+  eventSeverity: info
+  eventSources:
+    # GitRepository, Kustomization in various namespaces
+    - kind: GitRepository
+      name: '*'
+      namespace: cozy-fluxcd
+    - kind: GitRepository
+      name: '*'
+      namespace: default
+    - kind: Kustomization
+      name: '*'
+      namespace: cozy-fluxcd
+    - kind: Kustomization
+      name: '*'
+      namespace: default
+
+    # Helm resources in various namespaces
+    - kind: HelmRelease
+      name: '*'
+      namespace: default
+    - kind: HelmChart
+      name: '*'
+      namespace: default
+    - kind: HelmRepository
+      name: '*'
+      namespace: default
+
+    # Image resources in cluster's home namespace
+    - kind: ImageUpdateAutomation
+      name: '*'
+      namespace: cozy-fluxcd
+    - kind: ImageRepository
+      name: '*'
+      namespace: cozy-fluxcd
+    - kind: ImagePolicy
+      name: '*'
+      namespace: cozy-fluxcd
