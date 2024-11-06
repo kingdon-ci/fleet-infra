@@ -1,0 +1,26 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Provider
+metadata:
+  name: test-webhook
+  namespace: test-generic
+spec:
+  type: generic
+  address: http://10.17.12.102:5001/flux-webhook
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: test-alert
+  namespace: test-generic
+spec:
+  summary: "kustomization completed"
+  providerRef:
+    name: test-webhook
+  eventSeverity: info
+  eventSources:
+    - kind: Kustomization
+      name: water-monitor-dev
+      namespace: cozy-fluxcd
+  inclusionList:
+  - ".*Reconciliation finished.*"
