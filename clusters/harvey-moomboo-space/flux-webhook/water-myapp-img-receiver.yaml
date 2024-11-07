@@ -6,7 +6,7 @@ metadata:
   namespace: cozy-fluxcd
 spec:
   resources:
-  - apiVersion: source.toolkit.fluxcd.io/v1
+  - apiVersion: image.toolkit.fluxcd.io/v1beta2
     kind: ImageRepository
     name: myapp
   secretRef:
