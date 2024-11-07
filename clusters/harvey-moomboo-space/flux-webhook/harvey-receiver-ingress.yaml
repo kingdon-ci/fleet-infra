@@ -4,6 +4,7 @@ metadata:
   name: webhook-receiver
   namespace: cozy-fluxcd
 spec:
+  ingressClassName: nginx
   rules:
   - host: webhook.harvey.moomboo.space
     http:
