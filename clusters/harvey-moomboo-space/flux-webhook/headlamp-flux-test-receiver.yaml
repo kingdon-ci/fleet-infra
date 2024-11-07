@@ -1,0 +1,17 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1
+kind: Receiver
+metadata:
+  name: harvey-headlamp-flux-test
+  namespace: default
+spec:
+  resources:
+  - apiVersion: source.toolkit.fluxcd.io/v1
+    kind: GitRepository
+    name: headlamp-flux-test
+  secretRef:
+    name: headlamp-flux-test-webhook
+  type: github
+  events:
+    - "ping"
+    - "push"
