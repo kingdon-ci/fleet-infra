@@ -6,8 +6,7 @@ metadata:
   namespace: cozy-fluxcd
 spec:
   resources:
-  - apiVersion: image.toolkit.fluxcd.io/v1beta2
-    kind: ImageRepository
+  - kind: ImageRepository
     name: myapp
   secretRef:
     name: water-monitor-img-webhook
