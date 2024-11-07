@@ -20,7 +20,7 @@ kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
   name: allow-cert-manager-resolver-reverse
-  namespace: cert-manager
+  namespace: cozy-cert-manager
 spec:
   podSelector:
     matchLabels:
