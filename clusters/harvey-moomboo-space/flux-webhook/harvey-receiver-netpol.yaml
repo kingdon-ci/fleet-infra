@@ -28,35 +28,35 @@ spec:
         - podSelector:
             matchLabels:
               acme.cert-manager.io/http01-solver: "true"
----
-kind: NetworkPolicy
-apiVersion: networking.k8s.io/v1
-metadata:
-  name: allow-cert-manager-kubernetes-api-service
-  namespace: cozy-cert-manager
-spec:
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/instance: cert-manager
-  egress:
-    - to:
-      - ipBlock:
-          cidr: 10.95.233.49/32
-      ports:
-      - protocol: TCP
-        port: 443
-    - to:
-      - ipBlock:
-          cidr: 10.95.0.1/32
-      ports:
-      - protocol: TCP
-        port: 443
-    - to:
-      - ipBlock:
-          cidr: 10.96.59.56/32
-      ports:
-      - protocol: TCP
-        port: 6443
+# ---
+# kind: NetworkPolicy
+# apiVersion: networking.k8s.io/v1
+# metadata:
+#   name: allow-cert-manager-kubernetes-api-service
+#   namespace: cozy-cert-manager
+# spec:
+#   podSelector:
+#     matchLabels:
+#       app.kubernetes.io/instance: cert-manager
+#   egress:
+#     - to:
+#       - ipBlock:
+#           cidr: 10.95.233.49/32
+#       ports:
+#       - protocol: TCP
+#         port: 443
+#     - to:
+#       - ipBlock:
+#           cidr: 10.95.0.1/32
+#       ports:
+#       - protocol: TCP
+#         port: 443
+#     - to:
+#       - ipBlock:
+#           cidr: 10.96.59.56/32
+#       ports:
+#       - protocol: TCP
+#         port: 6443
 ---
 # kind: NetworkPolicy
 # apiVersion: networking.k8s.io/v1
