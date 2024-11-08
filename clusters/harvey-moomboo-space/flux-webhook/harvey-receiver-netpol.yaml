@@ -37,8 +37,14 @@ spec:
     matchLabels:
       app.kubernetes.io/instance: cert-manager
   egress:
+    # - to:
+    #     - namespaceSelector: {}
     - to:
-        - namespaceSelector: {}
+      - ipBlock:
+          cidr: 10.95.233.49/32
+      ports:
+      - protocol: TCP
+        port: 443
     - to:
       - ipBlock:
           cidr: 10.95.0.1/32
