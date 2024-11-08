@@ -29,6 +29,23 @@ spec:
     - to:
         - namespaceSelector: {}
 ---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-cert-manager-kubernetes-api
+  namespace: cozy-cert-manager
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: cert-manager
+  egress:
+    - to:
+    - ipBlock:
+        cidr: 10.96.59.56/32
+    ports:
+    - protocol: TCP
+      port: 6443
+---
 # kind: NetworkPolicy
 # apiVersion: networking.k8s.io/v1
 # metadata:
