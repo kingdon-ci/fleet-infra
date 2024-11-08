@@ -2,7 +2,10 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: eso
+  namespace: cozy-fluxcd
 spec:
+  install:
+    createNamespace: true
   targetNamespace: eso
   storageNamespace: eso
   releaseName: eso
