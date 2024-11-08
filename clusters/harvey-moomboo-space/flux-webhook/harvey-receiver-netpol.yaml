@@ -15,19 +15,17 @@ spec:
         - namespaceSelector:
             matchLabels:
               name: cozy-cert-manager
----
-kind: NetworkPolicy
-apiVersion: networking.k8s.io/v1
-metadata:
-  name: allow-cert-manager-resolver-reverse
-  namespace: cozy-cert-manager
-spec:
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/instance: cert-manager
-  egress:
-    - to:
-        - namespaceSelector: {}
+# ---
+# kind: NetworkPolicy
+# apiVersion: networking.k8s.io/v1
+# metadata:
+#   name: allow-cert-manager-resolver-reverse
+#   namespace: cozy-cert-manager
+# spec:
+#   podSelector:
+#     matchLabels:
+#       app.kubernetes.io/instance: cert-manager
+#   egress:
 ---
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
@@ -39,6 +37,8 @@ spec:
     matchLabels:
       app.kubernetes.io/instance: cert-manager
   egress:
+    - to:
+        - namespaceSelector: {}
     - to:
       - ipBlock:
           cidr: 10.95.0.1/32
