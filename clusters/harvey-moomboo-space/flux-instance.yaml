@@ -1,8 +1,8 @@
 apiVersion: fluxcd.controlplane.io/v1
 kind: FluxInstance
 metadata:
-  annotations:
-    kustomize.toolkit.fluxcd.io/ssa: Merge
+  # annotations:
+  #   kustomize.toolkit.fluxcd.io/ssa: Merge
   name: flux
   namespace: cozy-fluxcd
 spec:
