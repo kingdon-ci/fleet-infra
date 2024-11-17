@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-webhooks
+spec:
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - ipBlock:
+            cidr: 10.244.0.0/16
+        - namespaceSelector: {}
+  podSelector:
+    matchLabels:
+      app: notification-controller
