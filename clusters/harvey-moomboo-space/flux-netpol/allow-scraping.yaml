@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: allow-scraping
+  namespace: "cozy-fluxcd"
 spec:
   policyTypes:
     - Ingress
