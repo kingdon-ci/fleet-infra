@@ -20,6 +20,8 @@ spec:
       - patch: |
           apiVersion: networking.k8s.io/v1
           kind: NetworkPolicy
+          metadata:
+            name: all
           spec:
             ingress:
               - from:
@@ -33,6 +35,7 @@ spec:
         target:
           kind: NetworkPolicy
           name: allow-webhooks
+          namespace: cozy-fluxcd
       # - patch: |
       #     - op: add
       #       path: /spec/template/spec/containers/0/args/-
