@@ -10,11 +10,6 @@ spec:
     - from:
         - ipBlock:
             cidr: 0.0.0.0/0
-        - ipBlock:
-            cidr: 10.243.0.0/16
-        - ipBlock:
-            cidr: 10.244.0.0/16
-        - namespaceSelector: {}
   podSelector:
     matchLabels:
       app: notification-controller
