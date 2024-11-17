@@ -9,6 +9,8 @@ spec:
   ingress:
     - from:
         - ipBlock:
+            cidr: 10.243.0.0/16
+        - ipBlock:
             cidr: 10.244.0.0/16
         - namespaceSelector: {}
   podSelector:
