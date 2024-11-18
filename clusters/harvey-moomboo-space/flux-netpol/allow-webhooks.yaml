@@ -8,8 +8,7 @@ spec:
     - Ingress
   ingress:
     - from:
-        - ipBlock:
-            cidr: 0.0.0.0/0
+        - namespaceSelector: {}
   podSelector:
     matchLabels:
       app: notification-controller
