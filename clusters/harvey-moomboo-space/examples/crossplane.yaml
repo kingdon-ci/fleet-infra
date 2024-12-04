@@ -30,6 +30,8 @@ spec:
   path: ./examples/crossplane-providers
   prune: true
   wait: true
+  dependsOn:
+    - name: crossplane-system
   sourceRef:
     kind: GitRepository
     name: cozy-fluxcd
