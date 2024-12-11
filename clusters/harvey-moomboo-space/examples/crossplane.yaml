@@ -36,3 +36,43 @@ spec:
     kind: GitRepository
     name: cozy-fluxcd
     namespace: cozy-fluxcd
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: crossplane-helm-config
+  namespace: cozy-fluxcd
+spec:
+  interval: 10m0s
+  timeout: 1m0s
+  suspend: false
+  retryInterval: 1m30s
+  path: ./examples/crossplane-helm-config
+  prune: true
+  wait: true
+  dependsOn:
+    - name: crossplane-providers
+  sourceRef:
+    kind: GitRepository
+    name: cozy-fluxcd
+    namespace: cozy-fluxcd
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: crossplane-helm
+  namespace: cozy-fluxcd
+spec:
+  interval: 10m0s
+  timeout: 1m0s
+  suspend: false
+  retryInterval: 1m30s
+  path: ./examples/crossplane-helm
+  prune: true
+  wait: true
+  dependsOn:
+    - name: crossplane-helm-config
+  sourceRef:
+    kind: GitRepository
+    name: cozy-fluxcd
+    namespace: cozy-fluxcd
