@@ -1,0 +1,17 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1
+kind: Receiver
+metadata:
+  name: harvey-water-monitor
+  namespace: cozy-fluxcd
+spec:
+  resources:
+  - apiVersion: source.toolkit.fluxcd.io/v1
+    kind: GitRepository
+    name: water-dev
+  secretRef:
+    name: water-monitor-webhook
+  type: github
+  events:
+    - "ping"
+    - "push"

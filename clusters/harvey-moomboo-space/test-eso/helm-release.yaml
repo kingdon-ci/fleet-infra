@@ -1,0 +1,22 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: eso
+  namespace: cozy-fluxcd
+spec:
+  install:
+    createNamespace: true
+  targetNamespace: eso
+  storageNamespace: eso
+  releaseName: eso
+  chart:
+    spec:
+      chart: external-secrets
+      sourceRef:
+        kind: HelmRepository
+        name: eso
+  interval: 5m
+  timeout: 5m
+  upgrade:
+    remediation:
+      retries: 3

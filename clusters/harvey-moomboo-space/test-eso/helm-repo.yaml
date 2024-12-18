@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: eso
+  namespace: cozy-fluxcd
+spec:
+  interval: 5m
+  url: https://charts.external-secrets.io
