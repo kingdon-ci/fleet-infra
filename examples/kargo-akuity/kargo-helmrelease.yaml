@@ -1,0 +1,13 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kargo
+  namespace: kargo
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: kargo-chart
+  interval: 10m0s
+  driftDetection:
+    mode: enabled

@@ -1,0 +1,23 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: kargo
+  namespace: cozy-fluxcd
+spec:
+  interval: 10m0s
+  timeout: 1m0s
+  suspend: false
+  retryInterval: 1m30s
+  path: ./examples/kargo-akuity
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: cozy-fluxcd
+    namespace: cozy-fluxcd
+  values:
+    api:
+      adminAccount:
+        passwordHash: '$2a$10$Zrhhie4vLz5ygtVSaif6o.qN36jgs6vjtMBdM6yrU1FOeiAAMMxOm'
+        tokenSigningKey: iwishtowashmyirishwristwatch
